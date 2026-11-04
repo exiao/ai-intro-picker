@@ -184,6 +184,15 @@ const SRC={
  sherwin:'Sherwin Wu (OpenAI) on Lenny\'s Podcast, Feb 2026: "95% of engineers use Codex"'
 };
 let V=[
+{tested:"Final draft v3, cut to key points. Not tested on simulated readers.",id:"final3",name:"Final v3",mech:"Final draft, shortest",
+ title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
+ body:["OpenAI and Anthropic spend $6 million to $7 million a year on compute per employee. Anthropic's staff now use more Claude, at customer prices, than it pays them in cash. OpenAI's typical researcher uses over $600 of tokens a day. The top 10% use over $7,000.",
+ "The median US business spends $137 a year per employee on AI. Its top uses are writing and search.",
+ "The labs trade token spend for time. Agents don't tire, and they work in parallel, around the clock. Steering them is now the most important skill for any digital worker.",
+ "We've taught this to thousands of PMs, and many have been promoted. Here's how to build your own team of agents."],
+ ed:[1,1,1,0,0,0],per:[-1,-1,-1,-1],chart:"final",src:["s1","oair","tunguz","gallupuse"],
+ q:"About 100 words, down from about 250 in v2.",
+ risk:["Cut 'Most of that trains and runs their models,' so $6M–7M can read as staff spend.","Cut 'biggest opportunities of our lifetimes' and 'recognized by company leadership.'","'Many have been promoted' still needs one named example."]},
 {tested:"Final draft v2, after Gemini Argon's edits. Not tested on simulated readers.",id:"final2",name:"Final v2",mech:"Final draft, after Argon",
  title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
  body:["OpenAI and Anthropic now spend roughly $6 million to $7 million a year on compute for every person they employ. Most of that trains and runs their models, but a growing share goes to their own staff.","Anthropic's IPO filing says the value of its employees' Claude use, priced at what customers pay, passed its monthly cash payroll in April. At OpenAI, the typical researcher uses more than $600 of tokens a day, and the top 10% use more than $7,000.",
@@ -383,7 +392,7 @@ let V=[
  q:"All 4 simulated readers left. Samir: \"Gone the second it said 'single prompts' and 'AI-pilled.'\"",
  risk:["'Single prompts' build working products: every reader pushed back.","'AI-pilled' is insider slang. Elena won't forward it, and David read it as a dev tutorial.","The 'millions in token spend' line is your strongest idea and sits in paragraph 3. The other variants move it up."]}
 ];
-const ORDER=["final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
+const ORDER=["final3","final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
 const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
 let i=0;
 const tabs=document.getElementById("tabs");

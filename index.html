@@ -126,7 +126,7 @@ Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an opt
 <li><b>Revenue per dollar of compute fell in Q3.</b> The S-1 says $5.0B of Q3 compute came through short-term deals that "currently costs significantly more" than multi-year contracts. Fortune reports Anthropic makes more than $2 of revenue per $1 of compute. <a href="https://fortune.com/2026/10/27/as-anthropics-ipo-approaches-cfo-krishna-rao-faces-a-defining-test/">Fortune, Oct 27, 2026</a></li>
 <li><b>How Anthropic's staff fit in:</b> at an estimated $1–3M of list-price use per person, Anthropic's 5,300 staff use $5–16B a year of Claude at list price. That costs about $0.8–2.3B to run, or roughly 2% to 7% of Anthropic's own compute. My estimate.</li>
 </ol>
-<h3 style="font-size:14px;color:#e9ecf1">How much labs give employees to spend</h3>
+<h3 id="spend" style="font-size:14px;color:#e9ecf1">How much labs give employees to spend</h3>
 <p style="font-size:13px;color:#8a93a3">Neither lab publishes a per-employee token budget. Lines marked <b>stated</b> quote the source. Lines marked <b>my math</b> combine stated numbers.</p>
 <ul style="padding-left:18px;line-height:1.6">
 <li><b>Anthropic, stated:</b> internal Claude use at list prices grew over 250 times from January to September 2026, and in April passed monthly personnel expense excluding stock pay. <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">Anthropic S-1/A</a> · <a href="https://www.businessinsider.com/anthropic-claude-internal-ai-use-exceeds-employee-pay-tokens-2026-11">Business Insider</a></li>
@@ -199,13 +199,13 @@ const SRC={
 let V=[
 {tested:"Final draft v3, cut to key points. Not tested on simulated readers.",id:"final3",name:"Final v3",mech:"Final draft, shortest",
  title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
- body:["OpenAI and Anthropic spend $6 million to $7 million a year on compute per employee. Anthropic's staff now use more Claude, at customer prices, than it pays them in cash. OpenAI's typical researcher uses over $600 of tokens a day. The top 10% use over $7,000.",
+ body:["OpenAI and Anthropic spend over $6 million a year on compute per employee. Anthropic's staff now use more Claude, at customer prices, than it pays them in cash. OpenAI's typical researcher uses over $600 of tokens a day. The top 10% use over $7,000.",
  "The median US business spends $137 a year per employee on AI. Its top uses are writing and search.",
  "The labs trade token spend for time. Agents don't tire, and they work in parallel, around the clock. Steering them is now the most important skill for any digital worker.",
  "We've taught this to thousands of PMs, and many have been promoted. Here's how to build your own team of agents."],
  ed:[1,1,1,0,0,0],per:[-1,-1,-1,-1],chart:"final",src:["s1","oair","tunguz","gallupuse"],
  q:"About 100 words, down from about 250 in v2.",
- risk:["Cut 'Most of that trains and runs their models,' so $6M–7M can read as staff spend.","Cut 'biggest opportunities of our lifetimes' and 'recognized by company leadership.'","'Many have been promoted' still needs one named example."]},
+ risk:["Cut 'Most of that trains and runs their models,' so 'over $6M' can read as staff spend.","Cut 'biggest opportunities of our lifetimes' and 'recognized by company leadership.'","'Many have been promoted' still needs one named example."]},
 {tested:"Final draft v2, after Gemini Argon's edits. Not tested on simulated readers.",id:"final2",name:"Final v2",mech:"Final draft, after Argon",
  title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
  body:["OpenAI and Anthropic now spend roughly $6 million to $7 million a year on compute for every person they employ. Most of that trains and runs their models, but a growing share goes to their own staff.","Anthropic's IPO filing says the value of its employees' Claude use, priced at what customers pay, passed its monthly cash payroll in April. At OpenAI, the typical researcher uses more than $600 of tokens a day, and the top 10% use more than $7,000.",
@@ -410,7 +410,7 @@ const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
 let i=0;
 const tabs=document.getElementById("tabs");
 function sym(v){return v==="keep"?"✓":v==="maybe"?"?":v==="cut"?"✕":""}
-function drawTabs(){tabs.innerHTML=V.map((v,k)=>`<span class="tab ${k===i?'on':''}" data-k="${k}">${k+1}. ${v.from?"<span style=\"color:#6aa8ff\">◆</span> ":""}${v.name}<span class="s">${sym(ls[v.id])}</span></span>`).join("")+`<span class="tab" id="hid" style="border-style:dashed">${showHidden?"Hide":"Show"} 4 other originals</span><span class="hint">← → to flip</span>`;
+function drawTabs(){tabs.innerHTML=V.map((v,k)=>`<span class="tab ${k===i?'on':''}" data-k="${k}">${k+1}. ${v.from?"<span style=\"color:#6aa8ff\">◆</span> ":""}${v.name}<span class="s">${sym(ls[v.id])}</span></span>`).join("")+`<span class="tab" id="hid" style="border-style:dashed">${showHidden?"Hide":"Show"} 4 other originals</span><a href="#spend" class="tab" style="text-decoration:none;color:#6aa8ff;border-color:#6aa8ff">Employee spend breakdown ↓</a><span class="hint">← → to flip</span>`;
  tabs.querySelectorAll(".tab[data-k]").forEach(t=>t.onclick=()=>{i=+t.dataset.k;draw()});
  document.getElementById("hid").onclick=()=>{const cur=V[i].id;showHidden=!showHidden;vis();i=Math.max(0,V.findIndex(v=>v.id===cur));draw()}}
 function dot(s,l){const c=["no","mid","ok"][s];return `<span class="dot ${c}" title="${l}">${["✕","~","✓"][s]}</span>`}

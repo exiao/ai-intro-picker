@@ -17,7 +17,7 @@ h1{font-size:26px;line-height:1.25;margin:4px 0 6px}
 .sub{color:var(--mute);margin:0 0 18px}
 .body p{margin:0 0 14px}
 .tk{background:#3a2f12;color:var(--y);padding:0 4px;border-radius:4px;font-size:.92em}
-.unsrc{border-bottom:2px dotted var(--r)}
+.unsrc{border-bottom:2px dotted var(--r)}.srcd{border-bottom:2px dotted var(--g)}
 .mech{display:inline-block;font-size:12px;padding:3px 9px;border-radius:12px;background:#222838;color:var(--b);margin-bottom:10px}
 .grid{display:grid;gap:14px}
 .row{display:flex;align-items:center;gap:10px;font-size:14px}
@@ -55,7 +55,7 @@ footer{max-width:1300px;margin:0 auto 30px;padding:0 20px;color:var(--mute);font
   </section>
 </main>
 <footer>
-<span class="tk">TK</span> = a fact only you have. <span class="unsrc">Dotted red</span> = claim in your draft I could not find a source for.
+<span class="tk">TK</span> = a fact only you have. <span class="srcd">Dotted green</span> = claim in your draft that now has a source.
 Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an option wasn't tested. They are guesses about reactions, not survey data. <span style="color:#6aa8ff">◆</span> = from your Codex session, scored by its own 2 simulated readers. Editor dots on every option are my judgment. Click a tab or use ← → to flip. Keys 1–9 jump to the first nine. Your Keep/Maybe/Cut picks save in this browser.
 </footer>
 <section id="sources" style="max-width:1300px;margin:0 auto 40px;padding:0 20px;font-size:14px;color:#c7cdd8">
@@ -95,11 +95,21 @@ Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an opt
 <li><b>MercadoLibre: 20,000 developers use AI, and "human written code is the exception."</b> Q2 2026 call, Aug 5, 2026.</li>
 <li><b>Counterpoint: Zeta Global's internal AI costs are "well under 1% of revenue,"</b> even with company-wide OpenAI access. Q2 2026 call, Aug 4, 2026. Heavy use doesn't always mean heavy spend.</li>
 </ol>
+<h3 style="font-size:14px;color:#e9ecf1">Usage gap and who spends</h3>
+<ol start="28" style="padding-left:18px;line-height:1.6">
+<li><b>Top 5% of workers send 6x more messages than the median; 17x in coding, 11x in writing; 16x for the data-analysis tool among analysts.</b> Frontier firms send 2x more messages per seat. OpenAI, State of Enterprise AI, Dec 2025, from usage data at its business customers plus a survey of 9,000 workers. <a href="https://cdn.openai.com/pdf/7ef17d82-96bf-4dd1-9df2-228f7f377a29/the-state-of-enterprise-ai_2025-report.pdf">Report PDF</a></li>
+<li><b>Revenue per worker rising for the Mag 7, flat for the S&amp;P 493.</b> "VC-backed companies are spending more and more on tokens, but mainstream corporate America does not need the latest model and is unwilling to pay for it." Torsten Slok, Apollo chief economist, Oct 24, 2026. <a href="https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector">Apollo</a> <i>Sources your draft's S&amp;P 493 line.</i></li>
+<li><b>1% of firms drive 80% of AI spending on OpenAI and Anthropic; about 80% of those top spenders are venture-backed.</b> Ramp data, as reported by BeInCrypto on Oct 22, 2026. The venture-backed figure is attributed to CNBC's Kate Rooney. The top 1% spent $9,568 per employee in Sept 2026. <a href="https://finance.yahoo.com/technology/ai/articles/1-ai-users-drive-80-042800222.html">Article</a> <i>Sources your draft's VC-backed line, secondhand. Ramp's own index would be stronger.</i></li>
+<li><b>16% of AI users are "Frontier Professionals" who run agents on multi-step work; 80% of them make work they couldn't a year ago, vs 58% of all AI users.</b> 86% of AI users treat AI output as a starting point. Microsoft Work Trend Index 2026, 20,000 AI users in 10 countries. <a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">Microsoft</a></li>
+<li><b>Leaders use AI more than staff.</b> Frequent use: 44% of leaders, 30% of managers, 23% of individual contributors. Gallup, Q4 2025. <a href="https://www.gallup.com/workplace/701195/frequent-workplace-continued-rise.aspx">Gallup</a></li>
+<li><b>Revenue up 9.7% with headcount down 8.3%.</b> Grid Dynamics, Q3 2026 call, Oct 29, 2026, crediting AI tools in recruiting, proposals, finance and HR.</li>
+<li><b>Revenue per employee up 10% this year, headcount down about 3,000.</b> Bank of America Q3 2026 call, Oct 14, 2026 (question from analyst Mike Mayo).</li>
+</ol>
 <h3 style="font-size:14px;color:#e9ecf1">Still unsourced</h3>
 <ul style="padding-left:18px;line-height:1.6">
-<li>"S&amp;P 493 revenue per employee has not increased." From your draft. <span class="tk">[NEEDS SOURCE]</span></li>
-<li>"The top 1% of AI spenders are VC-backed companies." From your draft. Ramp's index can filter by funding and may hold it. <span class="tk">[NEEDS SOURCE]</span></li>
-<li>"10 to 100x more AI use at frontier labs." Your belief. The 45x code figure is the closest measured number. <span class="tk">[NEEDS SOURCE]</span></li>
+<li><s>"S&amp;P 493 revenue per employee has not increased."</s> Now sourced: Apollo (item 29).</li>
+<li><s>"The top 1% of AI spenders are VC-backed companies."</s> Sourced secondhand (item 30). Ramp's own report would be stronger.</li>
+<li>"10 to 100x more AI use at frontier labs." Closest measured numbers: OpenAI's 6x to 17x (top 5% vs median) and Anthropic's 45x code per engineer. Nothing measures 100x. <span class="tk">[PARTLY SOURCED]</span></li>
 </ul></section>
 <script>
 const P=[["Maya","power user (Claude, Cursor)"],["David","ChatGPT-only PM"],["Elena","VP, 14 PMs"],["Samir","skeptic, lean team"]];
@@ -113,6 +123,9 @@ const CH={
  meta:{t:"Meta: rise in code shipped per engineer, one year",rows:[["Heaviest AI users",80,"+80%"],["All engineers",30,"+30%"]],pct:true,extra:"Measured as code changes landed per engineer, Q4 2025"},
  metapm:{t:"Meta PMs, designers and data scientists who ship code",rows:[["Oct 2026",30,"~30%"],["A year earlier",5,"~5%"]],pct:true},
  google:{t:"Share of new code at Google written by AI",rows:[["Apr 2026",75,"~75%"],["Fall 2025",50,"~50%"]],pct:true,extra:"vs 15% of US workers who use AI daily (Gallup)"},
+ oai:{t:"Top 5% of AI users vs the typical worker (messages sent)",rows:[["Coding",17,"17x"],["Data analysis (analysts only)",16,"16x"],["Writing",11,"11x"],["All messages",6,"6x"]],extra:"OpenAI business customers, late 2025"},
+ msft:{t:"AI users who make work they couldn't a year ago",rows:[["Frontier Professionals (16% of AI users)",80,"80%"],["All AI users",58,"58%"]],pct:true,extra:"Microsoft survey of 20,000 AI users, 2026"},
+ apollo:{t:"Who spends on AI (Ramp, Sept 2026)",rows:[["Top 1% of businesses' share of OpenAI + Anthropic spend",80,"80%"],["Share of those top spenders that are VC-backed",80,"~80%"]],pct:true,extra:"Apollo, Oct 2026: revenue per worker flat for the S&P 493"},
  none:null
 };
 const SRC={
@@ -122,6 +135,10 @@ const SRC={
  nvq:'Jensen Huang, GTC keynote and analyst call, Mar 16–17, 2026',
  shop:'Shopify blog, Oct 2025',
  meli:'MercadoLibre Q2 2026 call',
+ oai:'<a href="https://cdn.openai.com/pdf/7ef17d82-96bf-4dd1-9df2-228f7f377a29/the-state-of-enterprise-ai_2025-report.pdf">OpenAI, State of Enterprise AI, Dec 2025</a>',
+ msft:'<a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">Microsoft Work Trend Index 2026</a>',
+ apollo:'<a href="https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector">Torsten Slok, Apollo, Oct 24, 2026</a>',
+ ramp80:'<a href="https://finance.yahoo.com/technology/ai/articles/1-ai-users-drive-80-042800222.html">Ramp data via BeInCrypto, Oct 22, 2026</a>',
  tunguz:'<a href="https://tomtunguz.com/ai-spend-breakeven-2029/">Tomasz Tunguz</a> (Anthropic estimate) · <a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
  jensen:'<a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">Jensen Huang on All-In, GTC 2026</a>',
  jelly:'<a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish, State of AI H1 2026</a> (engineers only)',
@@ -129,7 +146,7 @@ const SRC={
  slop:'<a href="https://www.betterup.com/workslop">BetterUp + Stanford, Sept 2025</a>',
  sherwin:'Sherwin Wu (OpenAI) on Lenny\'s Podcast, Feb 2026: "95% of engineers use Codex"'
 };
-const V=[
+let V=[
 {tested:"Scored as tested intro V1 (token gap). Wording changed since.",id:"gap",name:"The gap",mech:"Your thesis, with numbers",
  title:"AI labs spend $2 million per person on compute. The median US business spends $137.",
  sub:"How to run a team of agents like a frontier lab engineer, starting with the busywork on your own calendar.",
@@ -140,7 +157,7 @@ const V=[
  ed:[1,2,1,1,0,0],per:[2,0,2,1],chart:"gap",src:["tunguz","jensen","gallup"],
  q:"Elena (sim): \"A clean argument about how work changes, with no course-seller hype.\"",
  risk:["Compares spend, not usage. Your '10 to 100x more use' belief has no direct source yet. Spend is the closest proof.","The Anthropic figure includes model training, so it overstates per-person use.","Big-company numbers can make a ChatGPT-only PM feel this is not for them (David bounced on a similar token hook)."]},
-{tested:"Scored as tested intro V3 (prep-work tax).",id:"day",name:"Your Tuesday",mech:"Name the pain",
+{tested:"Scored as tested intro V3 (prep-work tax).",hidden:true,id:"day",name:"Your Tuesday",mech:"Name the pain",
  title:"Hand your busywork to a team of AI agents",
  sub:"A setup for PMs who still copy-paste between ChatGPT, Slack and docs.",
  body:[
@@ -150,7 +167,7 @@ const V=[
  ed:[1,1,2,2,1,0],per:[2,2,2,0],chart:"none",src:[],
  q:"David (sim): \"That line about ChatGPT trimming twenty minutes while I still do the glue work is my Sunday night.\"",
  risk:["Needs your real chore and real times. Without them it reads as generic.","Samir (sim): if prep work takes days, delete it instead of automating it. Answer with one thing the agents caught that you would have missed.","Doesn't carry your bigger 'most people are behind' thesis."]},
-{tested:"Scored as tested intro V2 (not autopilot).",id:"def",name:"Not autopilot",mech:"Say what it isn't",
+{tested:"Scored as tested intro V2 (not autopilot).",hidden:true,id:"def",name:"Not autopilot",mech:"Say what it isn't",
  title:"An agent team won't ship your product for you",
  sub:"It does the reading, sorting and first drafts so your judgment covers more ground.",
  body:[
@@ -160,7 +177,7 @@ const V=[
  ed:[0,2,1,0,2,0],per:[1,1,2,2],chart:"slop",src:["slop"],
  q:"Samir (sim): \"At least they admit full autonomy ships slop. That makes me hate this less than usual AI hype.\"",
  risk:["Opens on a negative, which delays the dream your editor asked for.","The workslop study is a vendor survey (BetterUp sells coaching). Cite it as such.","Weak on 'how hard is setup?'"]},
-{tested:"Scored as tested intro V4 (student story).",id:"case",name:"One person",mech:"Real person, real result",
+{tested:"Scored as tested intro V4 (student story).",hidden:true,id:"case",name:"One person",mech:"Real person, real result",
  title:"How <span class='tk'>[student]</span> handed <span class='tk'>[job]</span> to agents and <span class='tk'>[result]</span>",
  sub:"What changed in one PM's week, and how to copy the setup.",
  body:[
@@ -170,7 +187,7 @@ const V=[
  ed:[2,1,2,2,1,1],per:[1,1,0,0],chart:"none",src:[],
  q:"Elena (sim): \"Paired with a 'student from our cohort' story, this reads like a bootcamp sales page.\"",
  risk:["Lives or dies on one real, checkable story. You have 'many students promoted' but no named case in the draft.","Reads as a course pitch to VPs. Use a role and outcome, not 'our cohort.'","'They didn't learn to code' needs to be true for this student."]},
-{tested:"Not tested. Dots are my estimate from V1 + V3.",id:"mix",name:"Gap + Tuesday",mech:"Recommended mix",
+{tested:"Not tested. Dots are my estimate from V1 + V3.",hidden:true,id:"mix",name:"Gap + Tuesday",mech:"Recommended mix",
  title:"Nvidia's CEO wants a $500,000 engineer to spend $250,000 on tokens. Here's what that buys.",
  sub:"How to hand your busywork to a team of AI agents, without shipping slop.",
  body:[
@@ -261,22 +278,48 @@ const V=[
  ed:[1,0,1,1,0,0],per:[-1,-1,-1,-1],chart:"none",src:["nvq","shop"],
  q:"Not tested. The question lands on the reader directly, so it can feel like a challenge.",
  risk:["Jensen sells the chips that make tokens, so readers may discount him.","Can feel like pressure or blame. The skeptic reader may push back.","Still need to say what an agent team is by paragraph 2."]},
+{tested:"New option, your draft's argument with sources. Not tested on simulated readers.",id:"s493",name:"7 vs 493",mech:"Your draft, sourced",
+ title:"AI is paying off for seven companies. Not yet for the other 493.",sub:"Why the gap comes down to how people work, and how to get on the right side of it.",
+ body:["Apollo's chief economist ran the numbers in October. Revenue per worker is rising at the seven biggest tech companies. At the rest of the S&P 500, it's flat. His summary: AI has delivered \"zero financial payoff to corporate America outside of tech.\"",
+ "The spending is just as lopsided. On Ramp, 1% of businesses account for 80% of spending on OpenAI and Anthropic, and most of those are venture-backed. The median business spends $137 a year per employee.",
+ "Everyone can buy the same Claude and ChatGPT. The difference is that a few companies hand agents whole jobs, and most still use AI as a search box. Here's how to work like the first group, starting with <span class='tk'>[one job]</span>."],
+ ed:[1,1,1,0,0,0],per:[-1,-1,-1,-1],chart:"apollo",src:["apollo","ramp80","tunguz"],
+ q:"Not tested. Keeps your draft's opening argument and replaces the unsourced claims with real ones.",
+ risk:["Apollo is arguing AI hasn't paid off. A reader could take that as 'AI doesn't work,' the opposite of your point.","The 1% and 80% figures come from a news write-up of Ramp data and a CNBC reporter, not Ramp's own report.","'Same tools, different use' is my reading, not Apollo's."]},
+{tested:"New option from OpenAI's usage data. Not tested on simulated readers.",id:"oai",name:"17x",mech:"Usage gap, measured",
+ title:"The top 5% of AI users send 6x more messages than the typical worker. In coding, 17x.",sub:"OpenAI measured the gap inside its own business customers. Here's how to close it.",
+ body:["OpenAI looked at how employees at its business customers actually use ChatGPT. The top 5% send six times as many messages as the typical worker. For coding, it's 17 times. Even among data analysts, the heaviest users run the analysis tool 16 times as often.",
+ "Same companies, same subscription. The gap is in what they ask it to do.",
+ "Most people ask AI questions. The top 5% give it jobs. Here's how to make that switch, starting with <span class='tk'>[one job you can hand off this week]</span>."],
+ ed:[0,1,1,1,0,0],per:[-1,-1,-1,-1],chart:"oai",src:["oai"],
+ q:"Not tested. The closest measured number to your '10 to 100x' belief.",
+ risk:["OpenAI sells the product, and the data is from late 2025.","Messages are a rough measure. One agent task can replace dozens of messages, so this may undercount agent users.","6x to 17x is real but below your 10 to 100x. Don't round it up."]},
+{tested:"New option from Microsoft's 2026 survey. Not tested on simulated readers.",id:"msft",name:"1 in 6",mech:"Name the group",
+ title:"1 in 6 AI users has stopped asking and started delegating",sub:"What they do differently, and how to become one of them.",
+ body:["Microsoft surveyed 20,000 people who use AI at work. 16% have moved past chat. They run agents on multi-step work and build systems where several agents work together. Microsoft calls them Frontier Professionals.",
+ "80% of them say they now produce work they couldn't have a year ago. Among all AI users, it's 58%. They also score highest on checking what AI gives them.",
+ "<span class='tk'>[One line on when you crossed over.]</span> Here's how to make the same move, starting with <span class='tk'>[one job]</span>."],
+ ed:[2,1,0,1,2,0],per:[-1,-1,-1,-1],chart:"msft",src:["msft"],
+ q:"Not tested. The only option where the heavy users are also the most careful, which answers the slop worry.",
+ risk:["Self-reported survey, and Microsoft sells Copilot.","The survey covers only people who already use AI, not all workers.","'Frontier Professionals' is Microsoft's label. Use it once or not at all."]},
 {tested:"Scored as tested intro V0 (your draft).",id:"orig",name:"Your draft",mech:"Baseline",
  title:"How to become more AI pilled",sub:"Manage teams of AI agents to get more done",
  body:[
  "AI Agents are really freaking good now, but most companies still haven't realized this yet. With Astra and Opus 5.5, we can create working products, games, and movies with single prompts. […]",
- "The diffusion of AI into broad sectors of the economy is unevenly distributed. <span class='unsrc'>Revenue per employee has not increased for companies in the S&P 493.</span> <span class='unsrc'>The top 1% of AI spenders are VC backed companies</span> […]",
+ "The diffusion of AI into broad sectors of the economy is unevenly distributed. <span class='srcd'>Revenue per employee has not increased for companies in the S&P 493.</span> <span class='srcd'>The top 1% of AI spenders are VC backed companies</span> […]",
  "[…] Frontier labs are giving their employees millions of dollars of annual token spend […] After using billions of tokens and building our own AI agent harness and personal OS, we now delegate almost all of our work to AI agents. […]"],
- ed:[0,0,0,0,0,0],per:[0,0,0,0],chart:"gap",src:["tunguz"],
+ ed:[0,0,0,0,0,0],per:[0,0,0,0],chart:"gap",src:["tunguz","apollo","ramp80"],
  q:"All 4 simulated readers left. Samir: \"Gone the second it said 'single prompts' and 'AI-pilled.'\"",
  risk:["'Single prompts' build working products: every reader pushed back.","'AI-pilled' is insider slang. Elena won't forward it, and David read it as a dev tutorial.","The 'millions in token spend' line is your strongest idea and sits in paragraph 3. The other variants move it up."]}
 ];
+const ORDER=["gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
 const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
 let i=0;
 const tabs=document.getElementById("tabs");
 function sym(v){return v==="keep"?"✓":v==="maybe"?"?":v==="cut"?"✕":""}
-function drawTabs(){tabs.innerHTML=V.map((v,k)=>`<span class="tab ${k===i?'on':''}" data-k="${k}">${k+1}. ${v.from?"<span style=\"color:#6aa8ff\">◆</span> ":""}${v.name}<span class="s">${sym(ls[v.id])}</span></span>`).join("")+`<span class="hint">← → to flip</span>`;
- tabs.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{i=+t.dataset.k;draw()})}
+function drawTabs(){tabs.innerHTML=V.map((v,k)=>`<span class="tab ${k===i?'on':''}" data-k="${k}">${k+1}. ${v.from?"<span style=\"color:#6aa8ff\">◆</span> ":""}${v.name}<span class="s">${sym(ls[v.id])}</span></span>`).join("")+`<span class="tab" id="hid" style="border-style:dashed">${showHidden?"Hide":"Show"} 4 other originals</span><span class="hint">← → to flip</span>`;
+ tabs.querySelectorAll(".tab[data-k]").forEach(t=>t.onclick=()=>{i=+t.dataset.k;draw()});
+ document.getElementById("hid").onclick=()=>{const cur=V[i].id;showHidden=!showHidden;vis();i=Math.max(0,V.findIndex(v=>v.id===cur));draw()}}
 function dot(s,l){const c=["no","mid","ok"][s];return `<span class="dot ${c}" title="${l}">${["✕","~","✓"][s]}</span>`}
 function chart(k){const c=CH[k];if(!c)return '<div class="src">No outside numbers. Runs on your own story.</div>';
  const max=Math.max(...c.rows.map(r=>r[1]));const W=420,rowH=34;
@@ -296,6 +339,7 @@ function draw(){const v=V[i];drawTabs();
  document.querySelectorAll(".vote button").forEach(b=>b.classList.toggle("on",ls[v.id]===b.dataset.v));}
 document.querySelectorAll(".vote button").forEach(b=>b.onclick=()=>{ls[V[i].id]=b.dataset.v;localStorage.setItem("hookvotes",JSON.stringify(ls));draw()});
 document.onkeydown=e=>{if(e.key==="ArrowRight")i=(i+1)%V.length;else if(e.key==="ArrowLeft")i=(i-1+V.length)%V.length;else if(/^[1-9]$/.test(e.key)&&+e.key<=V.length)i=+e.key-1;else return;draw()};
+vis();
 if(/^#\d+$/.test(location.hash))i=Math.min(V.length-1,+location.hash.slice(1)-1);
 draw();
 </script></body></html>

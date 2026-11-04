@@ -135,7 +135,8 @@ Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an opt
 <li><b>Anthropic estimate, my math:</b> $1M–3M per employee a year at list price, from three methods: share of compute, OpenAI's per-researcher figures, and growth after April. Company-wide: $5.3B–15.9B a year at list price. <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">Anthropic S-1/A</a> · <a href="https://openai.com/index/research-acceleration-view-inside-openai/">OpenAI, Sept 6, 2026</a></li>
 <li><b>Anthropic cost to run, my math:</b> × 14.5% (cost of revenue $4,812M ÷ revenue $33,242M, first nine months of 2026) = $145,000–435,000 per employee, or $0.8B–2.3B company-wide. That's 2% to 6% of Q3's annualized compute ($9,863M × 4 = $39.5B). <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">Anthropic S-1/A</a></li>
 <li><b>OpenAI, stated:</b> by mid-August 2026, the median researcher used "more than $600 per day of inference at API prices," and the 90th percentile "more than $7,000 of tokens per day." Research org only. <a href="https://openai.com/index/research-acceleration-view-inside-openai/">OpenAI, Sept 6, 2026</a></li>
-<li><b>OpenAI annualized, my math:</b> × 250 working days = about $150,000 (median) and $1.75M (top 10%) per researcher a year. OpenAI doesn't say whether "per day" means working days.</li>
+<li><b>OpenAI yearly run rate, my math:</b> × 365 = about $219,000 (median) and $2.6M (top 10%) per researcher a year. Over 250 working days it's $150,000 and $1.75M. OpenAI doesn't say which days count.</li>
+<li><b>Accenture, stated:</b> centrally funds $29 a month of Claude per employee from Oct 1, 2026, or $348 a year. Some staff had used $500–1,000 a month ($6,000–12,000 a year). Accenture says this is "not a firm limit." <a href="https://www.404media.co/accenture-tells-employees-they-can-now-spend-only-29-on-claude-per-month/">404 Media</a> · <a href="https://www.forbes.com/sites/ronschmelzer/2026/10/16/accenture-bets-big-on-claude-then-limits-ai-spending/">Forbes</a></li>
 <li><b>OpenAI company-wide:</b> can't estimate. OpenAI doesn't publish how many researchers it has or the average spend.</li>
 <li><b>OpenAI compute per employee, my math:</b> about $50B of 2026 compute (secondhand) ÷ 4,500 staff (Mar 2026) to 8,000 (end-2026 target) = $6.3M–11.1M. <a href="https://epoch.ai/latest/introducing-the-ai-chip-users-explorer">Epoch AI</a> · <a href="https://www.reuters.com/business/openai-nearly-double-workforce-8000-by-end-2026-ft-reports-2026-03-21/">Reuters/FT, Mar 21, 2026</a></li>
 </ul>
@@ -172,6 +173,7 @@ const CH={
  perhead:{t:"Anthropic, per employee per year (Q3 2026 rate)",note:"Log scale. Pay and compute from the S-1. Staff use and its cost are my estimates, midpoints shown.",extra:"Serving paying customers took about 26% of all compute (first 9 months of 2026).",rows:[["All compute (training, research, customers, staff)",7400000,"$7.4M"],["Staff Claude use, at list price (est.)",2000000,"$1–3M"],["Pay, incl. stock",1290000,"$1.29M"],["Same use, at Anthropic's cost (est.)",290000,"$145–435K"]],log:true},
  trillion:{t:"2026 AI infrastructure spend (billions)",note:"Company guidance where given. Microsoft, Oracle and SpaceX are my run-rate estimates. Lab spend is mostly rented from the clouds above it, so it isn't added to the total.",rows:[["Amazon",220,"~$220B"],["Alphabet",200,"$195–205B"],["Microsoft (run rate)",180,"~$180B"],["Meta",140,"$135–145B"],["Oracle (run rate)",110,"~$110B"],["Neoclouds + xAI",105,"~$100–115B"],["OpenAI compute (rented)",50,"~$50B"],["Anthropic compute (rented)",32,"~$32B"]]},
  final:{t:"AI spend per person per year",note:"Log scale. OpenAI per employee is my math ($50B compute ÷ ~8,000 staff).",rows:[["Anthropic, all compute per employee",7400000,"$7.4M"],["OpenAI, all compute per employee",6250000,"~$6.3M"],["OpenAI top 10% researcher, tokens",1750000,"$1.75M"],["OpenAI typical researcher, tokens",150000,"$150K"],["Median US business, per employee",137,"$137"]],log:true},
+ final4:{t:"AI spend per person, yearly run rate",note:"Log scale. OpenAI researcher figures are daily × 365. Accenture's is its centrally funded amount.",rows:[["Anthropic, all compute per employee",7400000,"$7.4M"],["OpenAI top 10% researcher, tokens",2560000,"$2.6M"],["Anthropic staff Claude use, floor",460000,"$460K+"],["OpenAI typical researcher, tokens",219000,"$219K"],["Accenture, Claude per employee",348,"$348"],["Median US business, AI per employee",137,"$137"]],log:true},
  none:null
 };
 const SRC={
@@ -189,6 +191,7 @@ const SRC={
  capex:'Company Q3 2026 filings and calls (see Sources: AI compute spend)',
  oair:'<a href="https://openai.com/index/research-acceleration-view-inside-openai/">OpenAI, Sept 6, 2026</a>',
  gallupuse:'<a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx">Gallup, Jul 2026 (uses of AI)</a>',
+ accn:'<a href="https://www.404media.co/accenture-tells-employees-they-can-now-spend-only-29-on-claude-per-month/">404 Media, Oct 15, 2026</a> · <a href="https://www.forbes.com/sites/ronschmelzer/2026/10/16/accenture-bets-big-on-claude-then-limits-ai-spending/">Forbes</a>',
  tunguz:'<a href="https://tomtunguz.com/ai-spend-breakeven-2029/">Tomasz Tunguz</a> (Anthropic estimate) · <a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
  jensen:'<a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">Jensen Huang on All-In, GTC 2026</a>',
  jelly:'<a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish, State of AI H1 2026</a> (engineers only)',
@@ -197,6 +200,15 @@ const SRC={
  sherwin:'Sherwin Wu (OpenAI) on Lenny\'s Podcast, Feb 2026: "95% of engineers use Codex"'
 };
 let V=[
+{tested:"Final draft v4, your 9-point outline at yearly run rates. Not tested on simulated readers.",id:"final4",name:"Final v4",mech:"Your outline, yearly",
+ title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
+ body:["OpenAI and Anthropic spend over $6 million a year on compute per employee. Most of it trains and serves their models, but a growing share goes to their own staff. Anthropic's staff now use more Claude each year, at customer prices, than it pays them in cash, over $460,000 a person. OpenAI's top 10% of researchers run at about $2.6 million a year in tokens.",
+ "The median US business spends $137 a year per employee on AI. Accenture centrally funds $348 a year of Claude per person. Most people who use AI at work use it to write and search.",
+ "Instead of trading our time for work, we can trade token spend for it. Agents don't get tired. They work in parallel, around the clock, on demand. This makes steering agents the most essential skill for any digital worker.",
+ "We've taught thousands of PMs how to steer agents, <span class='tk'>[from most of the Fortune 500]</span>. Seeing how it's changed their companies has given us the conviction that applied AI is one of the biggest opportunities of our lifetimes. Here's what being AI-pilled looks like, and how to build your own team of agents."],
+ ed:[1,1,1,0,0,0],per:[-1,-1,-1,-1],chart:"final4",src:["s1","oair","tunguz","accn","gallupuse"],
+ q:"Your 9 points in order. Every number is a yearly figure.",
+ risk:["Point 2: your '15% of compute' and '$3M+' have no source. v4 uses the filing's floor ($460K+) and OpenAI's top-10% figure ($2.6M) instead.","$2.6M is $7,000 a day × 365. Over 250 working days it's $1.75M.","Accenture says $29 a month is not a firm limit, only part of its funding approach.","'From most of the Fortune 500' is your claim. Confirm it."]},
 {tested:"Final draft v3, cut to key points. Not tested on simulated readers.",id:"final3",name:"Final v3",mech:"Final draft, shortest",
  title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
  body:["OpenAI and Anthropic spend over $6 million a year on compute per employee. Anthropic's staff now use more Claude, at customer prices, than it pays them in cash. OpenAI's typical researcher uses over $600 of tokens a day. The top 10% use over $7,000.",
@@ -405,7 +417,7 @@ let V=[
  q:"All 4 simulated readers left. Samir: \"Gone the second it said 'single prompts' and 'AI-pilled.'\"",
  risk:["'Single prompts' build working products: every reader pushed back.","'AI-pilled' is insider slang. Elena won't forward it, and David read it as a dev tutorial.","The 'millions in token spend' line is your strongest idea and sits in paragraph 3. The other variants move it up."]}
 ];
-const ORDER=["final3","final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
+const ORDER=["final4","final3","final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
 const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
 let i=0;
 const tabs=document.getElementById("tabs");

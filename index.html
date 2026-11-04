@@ -110,6 +110,18 @@ Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an opt
 <li><b>Revenue up 9.7% with headcount down 8.3%.</b> Grid Dynamics, Q3 2026 call, Oct 29, 2026, crediting AI tools in recruiting, proposals, finance and HR.</li>
 <li><b>Revenue per employee up 10% this year, headcount down about 3,000.</b> Bank of America Q3 2026 call, Oct 14, 2026 (question from analyst Mike Mayo).</li>
 </ol>
+<h3 style="font-size:14px;color:#e9ecf1">AI compute spend, 2026</h3>
+<ol start="40" style="padding-left:18px;line-height:1.6">
+<li><b>Total: about $1 trillion.</b> "In 2026, AI providers are expected to spend nearly $1 trillion on AI infrastructure," plus $6 trillion more from 2027 to 2030. Gartner also says AI revenue through 2030 won't be enough to earn a return on all of it. <a href="https://www.gartner.com/en/newsroom/press-releases/2026-10-14-gartner-says-over-us-dollars-three-and-a-half-trillion-of-artificial-intelligence-infrastructure-spending-could-be-exposed-to-impairment-by-the-end-of-2030">Gartner, Oct 14, 2026</a></li>
+<li><b>Amazon: about $220B.</b> Reiterated with Q3 results, Oct 29, 2026. Cash capex was $172.2B in the first nine months and $75.9B in Q3 (10-Q, Oct 30, 2026). Includes some warehouse spending.</li>
+<li><b>Alphabet: $195–205B.</b> Q3 2026 capex was $51.4B, and 2027 is expected to rise significantly (Q3 results, Oct 29, 2026).</li>
+<li><b>Microsoft: about $180B run rate.</b> $45.2B of capex including finance leases in Jul–Sep 2026 (fiscal Q1 2027, Oct 28, 2026), times 4. My estimate. Microsoft's fiscal year runs July to June.</li>
+<li><b>Meta: $135–145B,</b> including finance lease payments. Q3 2026 release, Oct 21, 2026.</li>
+<li><b>Oracle: about $110B run rate.</b> $28.5B in Jun–Aug 2026 (fiscal Q1 2027), times 4. My estimate. Oracle guided $50B for the fiscal year ending May 2026.</li>
+<li><b>Neoclouds and xAI: about $100–115B.</b> CoreWeave guides $35–39B and Nebius $20–25B for 2026. SpaceX put $23.5B into its AI unit in the first half of 2026, about $45–50B a year at that pace (my estimate). <a href="https://www.morningstar.com/stocks/xais-neocloud-pivot-eats-up-spacex-capital-expenditure">Morningstar</a></li>
+<li><b>Labs, mostly rented from the clouds above: OpenAI about $50B, Anthropic about $32B.</b> OpenAI's 2026 compute commitment is reported by Epoch AI, secondhand. Anthropic spent $18.8B in the first nine months and $9.9B in Q3, so about $32B for the year at that pace (my estimate). Don't add these to the capex total: the money mostly pays the clouds. <a href="https://epoch.ai/latest/introducing-the-ai-chip-users-explorer">Epoch AI</a></li>
+<li><b>How Anthropic's staff fit in:</b> at an estimated $1–3M of list-price use per person, Anthropic's 5,300 staff use $5–16B a year of Claude at list price. That costs about $0.8–2.3B to run, or roughly 2% to 7% of Anthropic's own compute. My estimate.</li>
+</ol>
 <h3 style="font-size:14px;color:#e9ecf1">Still unsourced</h3>
 <ul style="padding-left:18px;line-height:1.6">
 <li><s>"S&amp;P 493 revenue per employee has not increased."</s> Now sourced: Apollo (item 29).</li>
@@ -132,6 +144,7 @@ const CH={
  msft:{t:"AI users who make work they couldn't a year ago",rows:[["Frontier Professionals (16% of AI users)",80,"80%"],["All AI users",58,"58%"]],pct:true,extra:"Microsoft survey of 20,000 AI users, 2026"},
  apollo:{t:"Who spends on AI (Ramp, Sept 2026)",rows:[["Top 1% of businesses' share of OpenAI + Anthropic spend",80,"80%"],["Share of those top spenders that are VC-backed",80,"~80%"]],pct:true,extra:"Apollo, Oct 2026: revenue per worker flat for the S&P 493"},
  perhead:{t:"Anthropic, per employee per year (Q3 2026 rate)",note:"Log scale. Pay and compute from the S-1. Staff use and its cost are my estimates, midpoints shown.",extra:"Serving paying customers took about 26% of all compute (first 9 months of 2026).",rows:[["All compute (training, research, customers, staff)",7400000,"$7.4M"],["Staff Claude use, at list price (est.)",2000000,"$1–3M"],["Pay, incl. stock",1290000,"$1.29M"],["Same use, at Anthropic's cost (est.)",290000,"$145–435K"]],log:true},
+ trillion:{t:"2026 AI infrastructure spend (billions)",note:"Company guidance where given. Microsoft, Oracle and SpaceX are my run-rate estimates. Lab spend is mostly rented from the clouds above it, so it isn't added to the total.",rows:[["Amazon",220,"~$220B"],["Alphabet",200,"$195–205B"],["Microsoft (run rate)",180,"~$180B"],["Meta",140,"$135–145B"],["Oracle (run rate)",110,"~$110B"],["Neoclouds + xAI",105,"~$100–115B"],["OpenAI compute (rented)",50,"~$50B"],["Anthropic compute (rented)",32,"~$32B"]]},
  none:null
 };
 const SRC={
@@ -145,6 +158,8 @@ const SRC={
  msft:'<a href="https://www.microsoft.com/en-us/worklab/work-trend-index/agents-human-agency-and-the-opportunity-for-every-organization">Microsoft Work Trend Index 2026</a>',
  apollo:'<a href="https://www.apollo.com/wealth/insights-news/insights/daily-spark/no-signs-of-ai-payoff-outside-the-tech-sector">Torsten Slok, Apollo, Oct 24, 2026</a>',
  ramp80:'<a href="https://finance.yahoo.com/technology/ai/articles/1-ai-users-drive-80-042800222.html">Ramp data via BeInCrypto, Oct 22, 2026</a>',
+ gartner:'<a href="https://www.gartner.com/en/newsroom/press-releases/2026-10-14-gartner-says-over-us-dollars-three-and-a-half-trillion-of-artificial-intelligence-infrastructure-spending-could-be-exposed-to-impairment-by-the-end-of-2030">Gartner, Oct 14, 2026</a>',
+ capex:'Company Q3 2026 filings and calls (see Sources: AI compute spend)',
  tunguz:'<a href="https://tomtunguz.com/ai-spend-breakeven-2029/">Tomasz Tunguz</a> (Anthropic estimate) · <a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
  jensen:'<a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">Jensen Huang on All-In, GTC 2026</a>',
  jelly:'<a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish, State of AI H1 2026</a> (engineers only)',
@@ -316,6 +331,14 @@ let V=[
  ed:[1,1,1,1,0,0],per:[-1,-1,-1,-1],chart:"perhead",src:["s1","tunguz"],
  q:"Not tested. Turns the cost math into a choice: Anthropic gives up millions in sales per person to give its staff more AI.",
  risk:["$1–3M is my estimate from three methods, not a number in the filing. The filing's only floor is $460K.","OpenAI's $7,000 a day is its top 10% of researchers, not all staff.","'Could sell that capacity' assumes customers would buy it all. Compute is shared, so it's an opportunity cost, not a sure sale.","Pay at $1.3M can distract. Some readers will fixate on the salaries."]},
+{tested:"New option from company filings and Gartner. Not tested on simulated readers.",id:"trillion",name:"$1 trillion",mech:"Supply vs use",
+ title:"The world will spend about $1 trillion on AI computers this year. The median business spends $137 a person using them.",sub:"The capacity is being built. Most people haven't learned to use it.",
+ body:["Amazon, Google, Microsoft, Meta and Oracle will spend roughly $850 billion this year building AI data centers. Add CoreWeave, Nebius and xAI, and it's close to Gartner's estimate of about $1 trillion.",
+ "The labs rent much of that. Anthropic alone spent $9.9 billion on compute last quarter, about $7.4 million for each of its 5,300 employees. The median US business spends $137 a year per employee on AI.",
+ "The computers exist. The skill is what's scarce. Here's how to start using your share, beginning with <span class='tk'>[one job]</span>."],
+ ed:[1,1,1,0,0,0],per:[-1,-1,-1,-1],chart:"trillion",src:["gartner","capex","s1","tunguz"],
+ q:"Not tested. Frames the gap as supply vs skill, not big companies vs small.",
+ risk:["Capex and per-employee spend aren't the same kind of number. A careful reader will notice.","Gartner also says AI revenue won't cover this spending, which cuts against your point.","Microsoft, Oracle and xAI figures are my run-rate estimates, not company guidance."]},
 {tested:"Scored as tested intro V0 (your draft).",id:"orig",name:"Your draft",mech:"Baseline",
  title:"How to become more AI pilled",sub:"Manage teams of AI agents to get more done",
  body:[

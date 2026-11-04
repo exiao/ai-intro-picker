@@ -56,7 +56,7 @@ footer{max-width:1300px;margin:0 auto 30px;padding:0 20px;color:var(--mute);font
 </main>
 <footer>
 <span class="tk">TK</span> = a fact only you have. <span class="unsrc">Dotted red</span> = claim in your draft I could not find a source for.
-Persona dots come from 4 simulated readers run on Nov 3. They are guesses about reactions, not survey data. <span style="color:#6aa8ff">◆</span> = from your Codex session, scored by its own 2 simulated readers. Editor dots on every option are my judgment. Use ← → or 1–9 to flip. Your Keep/Maybe/Cut picks save in this browser.
+Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an option wasn't tested. They are guesses about reactions, not survey data. <span style="color:#6aa8ff">◆</span> = from your Codex session, scored by its own 2 simulated readers. Editor dots on every option are my judgment. Click a tab or use ← → to flip. Keys 1–9 jump to the first nine. Your Keep/Maybe/Cut picks save in this browser.
 </footer>
 <section id="sources" style="max-width:1300px;margin:0 auto 40px;padding:0 20px;font-size:14px;color:#c7cdd8">
 <h2 style="font-size:16px;color:#e9ecf1">Sources</h2>
@@ -84,6 +84,17 @@ Persona dots come from 4 simulated readers run on Nov 3. They are guesses about 
 <li><b>Experienced developers took 19% longer with AI tools.</b> METR study, early-2025 tools. A skeptic may cite it. <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR</a></li>
 <li><b>21% of US workers say some of their work is done with AI.</b> Pew, Sept 2025. <a href="https://www.pewresearch.org/short-reads/2025/10/06/about-1-in-5-us-workers-now-use-ai-in-their-job-up-since-last-year/">Pew</a></li>
 </ol>
+<h3 style="font-size:14px;color:#e9ecf1">From company calls and filings</h3>
+<ol start="20" style="padding-left:18px;line-height:1.6">
+<li><b>Meta: output per engineer +30%, heaviest AI users +80%.</b> Susan Li, CFO, Q4 2025 follow-up call, Jan 28, 2026. Measured as code changes landed per engineer. She credits agentic coding tools.</li>
+<li><b>Meta: ~30% of PMs, designers, data scientists and researchers ship code, vs ~5% a year earlier.</b> More than 70% of analytics output is AI-assisted, up from about zero at the start of the year. Q3 2026 follow-up call, Oct 21, 2026.</li>
+<li><b>Google: nearly 75% of new code is AI-generated and approved by engineers, up from 50% last fall.</b> Sundar Pichai, Alphabet shareholder letter, Apr 2026.</li>
+<li><b>Nvidia: "You hire a $300,000 engineer and they spend no tokens … what are they doing?"</b> Analyst call, Mar 17, 2026. At GTC on Mar 16 he said he'd give engineers about half their pay again in tokens "so that they could be amplified 10x."</li>
+<li><b>Nvidia: 100% of software engineers use AI coding assistants. About 300 AI agents are used by 6,000+ hardware engineers.</b> 2026 annual meeting Q&amp;A, Aug 2026.</li>
+<li><b>Shopify: "Every team has unlimited access to top AI models."</b> Shopify blog, Oct 28, 2025. AI use has been a performance review question since Tobi Lütke's April 2025 memo.</li>
+<li><b>MercadoLibre: 20,000 developers use AI, and "human written code is the exception."</b> Q2 2026 call, Aug 5, 2026.</li>
+<li><b>Counterpoint: Zeta Global's internal AI costs are "well under 1% of revenue,"</b> even with company-wide OpenAI access. Q2 2026 call, Aug 4, 2026. Heavy use doesn't always mean heavy spend.</li>
+</ol>
 <h3 style="font-size:14px;color:#e9ecf1">Still unsourced</h3>
 <ul style="padding-left:18px;line-height:1.6">
 <li>"S&amp;P 493 revenue per employee has not increased." From your draft. <span class="tk">[NEEDS SOURCE]</span></li>
@@ -94,15 +105,24 @@ Persona dots come from 4 simulated readers run on Nov 3. They are guesses about 
 const P=[["Maya","power user (Claude, Cursor)"],["David","ChatGPT-only PM"],["Elena","VP, 14 PMs"],["Samir","skeptic, lean team"]];
 const E=["Shows the dream","Says what it is and isn't","Names the pain","Specific way in","Answers 'is it slop?'","Answers 'how hard?'"];
 const CH={
- gap:{t:"Yearly AI spend per person",rows:[["Anthropic staff Claude use (list price)",460000,"$460K+"],["Jensen Huang's target",250000,"$250K"],["Top 1% of businesses (per employee)",89000,"$89K"],["Median business (per employee)",137,"$137"]],log:true},
+ gap:{t:"Yearly AI spend per engineer",note:"Log scale. The top bar is ~15,000x the bottom.",rows:[["Anthropic (compute per employee)",2000000,"~$2M"],["Jensen Huang's target",250000,"$250K"],["Top 1% of businesses (per employee)",89000,"$89K"],["Median business (per employee)",137,"$137"]],log:true},
  heavy:{t:"Monthly AI coding spend per user, May 2026",rows:[["Heaviest 1% of users",2452,"$2,452"],["Average user",248,"$248"],["Typical company's median user",81,"$81"]],log:false},
  daily:{t:"US workers who use AI at work",rows:[["A few times a year+",52,"52%"],["Weekly+",30,"30%"],["Daily",15,"15%"]],pct:true},
  slop:{t:"Workslop survey (1,150 US desk workers)",rows:[["Got AI slop from a coworker last month",40,"40%"]],pct:true,extra:"About 2 hours to clean up each one"},
+ payroll:{t:"Yearly AI spend per person",note:"Log scale. The top bar is ~3,400x the bottom. $460K+ is my math from the S-1.",rows:[["Anthropic staff Claude use (list price)",460000,"$460K+"],["Jensen Huang's target",250000,"$250K"],["Top 1% of businesses",89000,"$89K"],["Median business",137,"$137"]],log:true},
+ meta:{t:"Meta: rise in code shipped per engineer, one year",rows:[["Heaviest AI users",80,"+80%"],["All engineers",30,"+30%"]],pct:true,extra:"Measured as code changes landed per engineer, Q4 2025"},
+ metapm:{t:"Meta PMs, designers and data scientists who ship code",rows:[["Oct 2026",30,"~30%"],["A year earlier",5,"~5%"]],pct:true},
+ google:{t:"Share of new code at Google written by AI",rows:[["Apr 2026",75,"~75%"],["Fall 2025",50,"~50%"]],pct:true,extra:"vs 15% of US workers who use AI daily (Gallup)"},
  none:null
 };
 const SRC={
  s1:'<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">Anthropic S-1/A</a>',
- tunguz:'<a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
+ meta:'Meta Q4 2025 and Q3 2026 follow-up calls (Susan Li, CFO)',
+ google:'Sundar Pichai, Alphabet shareholder letter, Apr 2026',
+ nvq:'Jensen Huang, GTC keynote and analyst call, Mar 16–17, 2026',
+ shop:'Shopify blog, Oct 2025',
+ meli:'MercadoLibre Q2 2026 call',
+ tunguz:'<a href="https://tomtunguz.com/ai-spend-breakeven-2029/">Tomasz Tunguz</a> (Anthropic estimate) · <a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
  jensen:'<a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">Jensen Huang on All-In, GTC 2026</a>',
  jelly:'<a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish, State of AI H1 2026</a> (engineers only)',
  gallup:'<a href="https://www.gallup.com/699797/indicator-artificial-intelligence.aspx">Gallup, May 2026</a>',
@@ -111,15 +131,15 @@ const SRC={
 };
 const V=[
 {tested:"Scored as tested intro V1 (token gap). Wording changed since.",id:"gap",name:"The gap",mech:"Your thesis, with numbers",
- title:"Anthropic values its staff's Claude use above its payroll. The median US business spends $137 a person.",
+ title:"AI labs spend $2 million per person on compute. The median US business spends $137.",
  sub:"How to run a team of agents like a frontier lab engineer, starting with the busywork on your own calendar.",
  body:[
- "Anthropic's IPO filing says its employees' own Claude use, priced at what customers pay, is now worth more than its payroll. That's over $460,000 a person each year, and its engineers ship more than 45 times as much code a day as in 2024. The median US business spends $137 a person on AI. Jensen Huang says a $500,000 engineer should burn $250,000 in tokens, and that he'd \"go ape\" if one spent $5,000.",
- "Outside the labs, 15% of US workers use AI daily, and only 19% of office workers do. Most of them use it as a search box and a writing partner.",
+ "Anthropic spends about $2 million on compute per employee each year. The median US business spends $137 per employee. Jensen Huang says a $500,000 engineer should burn $250,000 in tokens, and that he'd \"go ape\" if one spent $5,000.",
+ "Outside the labs, 15% of US workers use AI daily. Most of them use it as a search box and a writing partner.",
  "The gap is in how the work gets done. Lab engineers hand whole jobs to agents that read every file, run in parallel, and keep going overnight. They spend their own time deciding what matters and checking what comes back. We work this way now, and in this guide we'll show you how to set it up for <span class='tk'>[the 2-3 jobs this guide covers]</span>."],
- ed:[1,2,1,1,0,0],per:[2,0,2,1],chart:"gap",src:["s1","tunguz","jensen","gallup"],
+ ed:[1,2,1,1,0,0],per:[2,0,2,1],chart:"gap",src:["tunguz","jensen","gallup"],
  q:"Elena (sim): \"A clean argument about how work changes, with no course-seller hype.\"",
- risk:["Compares spend, not usage. Your '10 to 100x more use' belief has no direct source yet. Spend is the closest proof.","$460K is my math from the filing, not a number it states. It uses list price, which is what customers pay, not Anthropic's cost.","Big-company numbers can make a ChatGPT-only PM feel this is not for them (David bounced on a similar token hook)."]},
+ risk:["Compares spend, not usage. Your '10 to 100x more use' belief has no direct source yet. Spend is the closest proof.","The Anthropic figure includes model training, so it overstates per-person use.","Big-company numbers can make a ChatGPT-only PM feel this is not for them (David bounced on a similar token hook)."]},
 {tested:"Scored as tested intro V3 (prep-work tax).",id:"day",name:"Your Tuesday",mech:"Name the pain",
  title:"Hand your busywork to a team of AI agents",
  sub:"A setup for PMs who still copy-paste between ChatGPT, Slack and docs.",
@@ -201,6 +221,46 @@ const V=[
  ed:[2,2,1,0,1,0],per:[-1,-1],chart:"none",src:[],
  q:"Not tested. Keeps your phrase 'AI-pilled' and defines it, which no other option does.",
  risk:["Longest option, at 7 paragraphs before the example.","Opens with 'Imagine,' a made-up scene, so it needs the real example to land.","'AI-pilled' put off the VP in my panel. Here it is at least defined."]},
+{tested:"New option from the Anthropic S-1. Not tested on simulated readers.",id:"payroll",name:"Above payroll",mech:"Lab evidence",
+ title:"Anthropic's staff now use more AI than it pays them",sub:"What happens when a company's Claude bill passes its payroll, and how to start working that way.",
+ body:["Anthropic's IPO filing has a line most people skipped. The value of its employees' own Claude use, priced at what customers pay, passed its monthly payroll in April 2026. That's more than $460,000 a person a year. Its engineers now ship more than 45 times as much code a day as they did in 2024.",
+ "The median US business spends $137 a year per employee on AI. Only 19% of office workers use it daily.",
+ "The gap is in how they work. Anthropic's staff hand whole jobs to agents and spend their own time deciding what's worth doing. Here's how to set that up for <span class='tk'>[the 2-3 jobs this guide covers]</span>."],
+ ed:[1,1,1,1,0,0],per:[-1,-1,-1,-1],chart:"payroll",src:["s1","tunguz","gallup"],
+ q:"Not tested. Uses the strongest primary source you have: a company's own SEC filing.",
+ risk:["$460K is my math, not a number in the filing. It uses list price, not Anthropic's cost.","Anthropic sells Claude, so it has a reason to report high internal use.","A ChatGPT-only PM may still feel this is about labs, not them."]},
+{tested:"New option from Meta's earnings calls. Not tested on simulated readers.",id:"meta",name:"Inside Meta",mech:"Gap inside one company",
+ title:"At Meta, output per engineer rose 30%. For the heaviest AI users, 80%.",sub:"The gap isn't labs vs everyone. It's opening between people on the same team.",
+ body:["Meta tracks how much code each engineer ships. Over a year, output per engineer rose 30%. For the engineers who leaned hardest on AI agents, it rose 80%.",
+ "Same company, same tools, same access. The difference was how they used them.",
+ "That's the skill this guide is about: handing agents whole jobs, giving them the context they need, and checking what comes back. <span class='tk'>[One sentence on what you do differently, e.g. how many agents you run at once.]</span>"],
+ ed:[2,1,1,2,1,0],per:[-1,-1,-1,-1],chart:"meta",src:["meta"],
+ q:"Not tested. It answers David's worry: the gap comes from how you use the tools, not how much your company spends.",
+ risk:["Meta measures code changes landed, which favors engineers. Your readers are mostly PMs.","Heavy users may have been strong engineers already, so it shows a gap, not cause."]},
+{tested:"New option from Meta's Q3 2026 call. Not tested on simulated readers.",id:"metapm",name:"PMs ship code",mech:"Your reader's role",
+ title:"A year ago, 5% of Meta's PMs and designers shipped code. Now it's 30%.",sub:"What changes when agents let product people build, and how to start.",
+ body:["Meta's CFO shared a number on its October earnings call that should make every PM pay attention. Nearly 30% of its product managers, designers and data scientists now ship code. A year ago it was about 5%.",
+ "They didn't all learn to program. They learned to give agents a job, the context to do it, and a way to show the result.",
+ "Most PMs still use AI to rewrite specs. Here's how to use it to build <span class='tk'>[your example: a prototype, a data pull, a test]</span> instead."],
+ ed:[2,1,2,2,0,1],per:[-1,-1,-1,-1],chart:"metapm",src:["meta"],
+ q:"Not tested. It speaks to PMs by name with a number from a company they know.",
+ risk:["'Ship code' at Meta may include small changes, so check before you imply full features.","'They didn't all learn to program' is my inference, not Meta's words."]},
+{tested:"New option from company calls. Not tested on simulated readers.",id:"google",name:"75% of the code",mech:"Labs vs everyone",
+ title:"AI writes 75% of Google's new code. 15% of US workers use AI daily.",sub:"The people building AI already work this way. Here's how to catch up.",
+ body:["Sundar Pichai told shareholders in April that nearly 75% of new code at Google is written by AI and approved by engineers, up from 50% the fall before. At MercadoLibre, which has 20,000 developers, \"human written code is the exception.\"",
+ "Meanwhile, 15% of US workers use AI daily, and fewer than 1 in 5 office workers do.",
+ "The companies furthest ahead stopped asking AI questions and started giving it jobs. Here's how to make that switch, starting with <span class='tk'>[one job you can hand off this week]</span>."],
+ ed:[1,1,0,1,1,0],per:[-1,-1,-1,-1],chart:"google",src:["google","meli","gallup"],
+ q:"Not tested. Your thesis in its plainest form, with two named companies.",
+ risk:["It's about code, and most of your readers don't write code.","'Approved by engineers' does the anti-slop work, so keep it in.","Could read as a news roundup unless your own example follows fast."]},
+{tested:"New option from Nvidia and Shopify. Not tested on simulated readers.",id:"laptop",name:"Laptop and tokens",mech:"Turn it on the reader",
+ title:"\"You hire a $300,000 engineer and they spend no tokens. What are they doing?\"",sub:"Jensen Huang's question, and how to answer it for your own job.",
+ body:["Jensen Huang has a new way to describe a first day at work. You used to get a laptop. Now you get a laptop and tokens. \"The idea that you would hire a $300,000 engineer and they spend no tokens in doing their job,\" he told analysts in March, \"you got to ask the question, what are they doing?\"",
+ "Shopify already works this way. Every team there has unlimited access to the top models, and AI use is a question in performance reviews.",
+ "If your manager asked what you'd do with an unlimited token budget, would you have an answer? Here's how to build one, starting with <span class='tk'>[one job]</span>."],
+ ed:[1,0,1,1,0,0],per:[-1,-1,-1,-1],chart:"none",src:["nvq","shop"],
+ q:"Not tested. The question lands on the reader directly, so it can feel like a challenge.",
+ risk:["Jensen sells the chips that make tokens, so readers may discount him.","Can feel like pressure or blame. The skeptic reader may push back.","Still need to say what an agent team is by paragraph 2."]},
 {tested:"Scored as tested intro V0 (your draft).",id:"orig",name:"Your draft",mech:"Baseline",
  title:"How to become more AI pilled",sub:"Manage teams of AI agents to get more done",
  body:[
@@ -223,7 +283,7 @@ function chart(k){const c=CH[k];if(!c)return '<div class="src">No outside number
  let s=`<div style="font-size:13px;margin-bottom:6px">${c.t}</div><svg viewBox="0 0 ${W} ${c.rows.length*rowH}" width="100%">`;
  c.rows.forEach((r,j)=>{let f=c.pct?r[1]/100:(c.log?Math.log10(r[1])/Math.log10(max):r[1]/max);const w=Math.max(4,f*(W-190));
   s+=`<text x="0" y="${j*rowH+15}" style="fill:#8a93a3">${r[0]}</text><rect x="0" y="${j*rowH+20}" width="${w}" height="9" rx="4" fill="${j===c.rows.length-1&&!c.pct?'#f06a6a':'#3ecf8e'}"/><text x="${w+8}" y="${j*rowH+29}" style="font-weight:700">${r[2]}</text>`});
- s+="</svg>";if(c.log)s+='<div class="legend">Log scale. The top bar is ~3,400x the bottom.</div>';if(c.extra)s+=`<div class="legend">${c.extra}</div>`;return s}
+ s+="</svg>";if(c.note)s+=`<div class="legend">${c.note}</div>`;if(c.extra)s+=`<div class="legend">${c.extra}</div>`;return s}
 function draw(){const v=V[i];drawTabs();
  mech.textContent=v.mech;title.innerHTML=v.title;subtitle.innerHTML=v.sub;body.innerHTML=v.body.map(p=>`<p>${p}</p>`).join("");
  editor.innerHTML=E.map((e,k)=>`<div class="row"><span class="n">${e}</span>${dot(v.ed[k],e)}</div>`).join("");

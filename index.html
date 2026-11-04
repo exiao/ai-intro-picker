@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Intro picker</title>
+<style>
+:root{--bg:#0f1115;--card:#171a21;--ink:#e9ecf1;--mute:#8a93a3;--line:#262b35;--g:#3ecf8e;--y:#f5c451;--r:#f06a6a;--b:#6aa8ff}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.5 -apple-system,BlinkMacSystemFont,"Inter",sans-serif}
+header{display:flex;gap:8px;padding:14px 20px;border-bottom:1px solid var(--line);flex-wrap:wrap;align-items:center}
+.tab{padding:6px 12px;border-radius:20px;border:1px solid var(--line);cursor:pointer;color:var(--mute);font-size:14px;user-select:none}
+.tab.on{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.tab .s{margin-left:6px}
+.hint{margin-left:auto;color:var(--mute);font-size:13px}
+main{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(0,1fr);gap:20px;padding:20px;max-width:1300px;margin:auto}
+@media(max-width:900px){main{grid-template-columns:1fr}}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:22px}
+.label{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--mute);margin-bottom:8px}
+h1{font-size:26px;line-height:1.25;margin:4px 0 6px}
+.sub{color:var(--mute);margin:0 0 18px}
+.body p{margin:0 0 14px}
+.tk{background:#3a2f12;color:var(--y);padding:0 4px;border-radius:4px;font-size:.92em}
+.unsrc{border-bottom:2px dotted var(--r)}
+.mech{display:inline-block;font-size:12px;padding:3px 9px;border-radius:12px;background:#222838;color:var(--b);margin-bottom:10px}
+.grid{display:grid;gap:14px}
+.row{display:flex;align-items:center;gap:10px;font-size:14px}
+.row .n{width:150px;color:var(--mute);flex:none}
+.dots{display:flex;gap:6px}
+.dot{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;font-size:11px;font-weight:700;color:#0f1115}
+.ok{background:var(--g)}.mid{background:var(--y)}.no{background:var(--r)}.na{background:#333a47;color:var(--mute)}
+.legend{font-size:12px;color:var(--mute);margin-top:4px}
+.risk{font-size:14px;margin:0;padding-left:18px}.risk li{margin-bottom:4px}
+.src{font-size:13px;color:var(--mute)}.src a{color:var(--b)}
+.quote{font-size:14px;border-left:3px solid var(--line);padding-left:10px;color:#c7cdd8;margin:6px 0}
+.bar{height:10px;border-radius:5px}
+svg text{fill:var(--ink);font-size:12px}
+footer{max-width:1300px;margin:0 auto 30px;padding:0 20px;color:var(--mute);font-size:13px}
+.vote{display:flex;gap:8px;margin-top:14px}
+.vote button{background:#222838;color:var(--ink);border:1px solid var(--line);border-radius:8px;padding:6px 12px;cursor:pointer}
+.vote button.on{background:var(--g);color:#0f1115}
+</style></head><body>
+<header id="tabs"></header>
+<main>
+  <section class="panel">
+    <div class="label">Intro text</div>
+    <div id="mech" class="mech"></div>
+    <h1 id="title"></h1><p class="sub" id="subtitle"></p>
+    <div class="body" id="body"></div>
+    <div class="vote"><button data-v="keep">Keep</button><button data-v="maybe">Maybe</button><button data-v="cut">Cut</button></div>
+  </section>
+  <section class="grid">
+    <div class="panel"><div class="label">Fixes the editor notes?</div><div id="editor" class="grid"></div>
+      <div class="legend">Green fixes it · yellow partial · red misses</div></div>
+    <div class="panel"><div class="label">Simulated readers (AI personas, not real people)</div><div id="personas" class="grid"></div>
+      <div id="pquote"></div></div>
+    <div class="panel"><div class="label">Numbers it leans on</div><div id="chart"></div><div id="srcs" class="src"></div></div>
+    <div class="panel"><div class="label">What could break it</div><ul class="risk" id="risks"></ul></div>
+  </section>
+</main>
+<footer>
+<span class="tk">TK</span> = a fact only you have. <span class="unsrc">Dotted red</span> = claim in your draft I could not find a source for.
+Persona dots come from 4 simulated readers run on Nov 3. They are guesses about reactions, not survey data. <span style="color:#6aa8ff">◆</span> = from your Codex session, scored by its own 2 simulated readers. Editor dots on every option are my judgment. Use ← → or 1–9 to flip. Your Keep/Maybe/Cut picks save in this browser.
+</footer>
+<section id="sources" style="max-width:1300px;margin:0 auto 40px;padding:0 20px;font-size:14px;color:#c7cdd8">
+<h2 style="font-size:16px;color:#e9ecf1">Sources</h2>
+<h3 style="font-size:14px;color:#e9ecf1">Frontier labs</h3>
+<ol style="padding-left:18px;line-height:1.6">
+<li><b>Staff Claude use is worth more than payroll.</b> Anthropic's amended S-1, filed Nov 2, 2026. Internal Claude use at list prices "has grown by over 250 times from January 2026 to September 2026, and in April 2026, this monthly value first exceeded our monthly personnel expense, excluding stock-based compensation." <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">SEC filing</a></li>
+<li><b>Over $460,000 per person a year.</b> My math, not stated in the filing. Q3 2026 personnel costs were $1,711M, of which $1.1B was stock pay, leaving about $611M, or $204M a month. Divided by about 5,300 employees, that's $38,000 a month, or $460,000 a year. This is a floor, and it assumes internal use stayed above payroll in Q3. <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">SEC filing</a> · <a href="https://www.techspot.com/news/114428-anthropic-ipo-filing-reveals-17-billion-quarterly-personnel.html">TechSpot on the personnel numbers</a></li>
+<li><b>Over 45 times the code per engineer.</b> Same filing: "the average daily volume of code contributed to our codebase per engineer in the three months ended September 30, 2026 was over 45 times the average daily volume in the year ended December 31, 2024." <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">SEC filing</a></li>
+<li><b>Total compute: $9.86B in Q3 2026,</b> or about $7.4M a year per employee. This covers training and serving customers, not just staff use. Same filing, quarterly results table. <a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">SEC filing</a></li>
+<li><b>List price is not cost.</b> Hacker News readers objected that Anthropic values its own use at the price it charges customers. <a href="https://news.ycombinator.com/item?id=50339494">Hacker News thread</a></li>
+<li><b>"95% of engineers use Codex. 100% of our PRs are reviewed by Codex."</b> Sherwin Wu, OpenAI, on Lenny's Podcast, Feb 2026.</li>
+<li><b>$250,000 in tokens for a $500,000 engineer.</b> Jensen Huang on the All-In Podcast, last day of GTC 2026. He said he'd "go ape" if that engineer spent $5,000. <a href="https://www.youtube.com/watch?v=gwW8GKwHB3I">Podcast</a> · <a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">R&amp;D World write-up</a></li>
+<li><b>Earlier estimate, replaced:</b> Tomasz Tunguz put Anthropic at about $2M of compute per employee, counting training. The filing supersedes it. <a href="https://tomtunguz.com/ai-spend-breakeven-2029/">tomtunguz.com</a></li>
+</ol>
+<h3 style="font-size:14px;color:#e9ecf1">Everyone else</h3>
+<ol start="9" style="padding-left:18px;line-height:1.6">
+<li><b>$137 median, $89K top 1%.</b> Ramp AI Index, June 26, 2026, by Ara Kharazian. Card and bill-pay data from 70,000+ US businesses, per employee across all roles, counting subscriptions, coding agents, tokens and GPU cloud. Monthly: $11.38 median, $611 top 10%, $7,449 top 1%. Tunguz calls the $137 "per engineer," but Ramp measures per employee. <a href="https://ramp.com/data/ai-index-june-2026">Ramp</a></li>
+<li><b>15% daily, 30% weekly, 52% a few times a year.</b> Gallup survey of US employees, May 2026. Daily use by industry: tech 42%, finance 27%, professional services 22%, the rest 9–15%. <a href="https://www.gallup.com/699797/indicator-artificial-intelligence.aspx">Gallup</a></li>
+<li><b>Office vs hands-on jobs.</b> Gallup, Q4 2025. In jobs that could be done remotely: 19% daily, 40% weekly, 66% at all. In jobs that can't: 7%, 17%, 32%. <a href="https://www.gallup.com/workplace/701195/frequent-workplace-continued-rise.aspx">Gallup</a></li>
+<li><b>Heaviest 1% spend $2,452 a month, the typical user $81.</b> Jellyfish, State of AI H1 2026. Engineers using AI coding tools, May 2026. <a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish</a></li>
+<li><b>40% got AI slop last month, about 2 hours to fix each one.</b> BetterUp Labs and Stanford Social Media Lab, survey of 1,150 US desk workers, Sept 2025. BetterUp sells coaching. <a href="https://www.betterup.com/workslop">BetterUp</a> · <a href="https://hbr.org/2025/09/ai-generated-workslop-is-destroying-productivity">HBR</a></li>
+</ol>
+<h3 style="font-size:14px;color:#e9ecf1">Found, not used on the page</h3>
+<ol start="14" style="padding-left:18px;line-height:1.6">
+<li><b>Experienced developers took 19% longer with AI tools.</b> METR study, early-2025 tools. A skeptic may cite it. <a href="https://metr.org/blog/2025-07-10-early-2025-ai-experienced-os-dev-study/">METR</a></li>
+<li><b>21% of US workers say some of their work is done with AI.</b> Pew, Sept 2025. <a href="https://www.pewresearch.org/short-reads/2025/10/06/about-1-in-5-us-workers-now-use-ai-in-their-job-up-since-last-year/">Pew</a></li>
+</ol>
+<h3 style="font-size:14px;color:#e9ecf1">Still unsourced</h3>
+<ul style="padding-left:18px;line-height:1.6">
+<li>"S&amp;P 493 revenue per employee has not increased." From your draft. <span class="tk">[NEEDS SOURCE]</span></li>
+<li>"The top 1% of AI spenders are VC-backed companies." From your draft. Ramp's index can filter by funding and may hold it. <span class="tk">[NEEDS SOURCE]</span></li>
+<li>"10 to 100x more AI use at frontier labs." Your belief. The 45x code figure is the closest measured number. <span class="tk">[NEEDS SOURCE]</span></li>
+</ul></section>
+<script>
+const P=[["Maya","power user (Claude, Cursor)"],["David","ChatGPT-only PM"],["Elena","VP, 14 PMs"],["Samir","skeptic, lean team"]];
+const E=["Shows the dream","Says what it is and isn't","Names the pain","Specific way in","Answers 'is it slop?'","Answers 'how hard?'"];
+const CH={
+ gap:{t:"Yearly AI spend per person",rows:[["Anthropic staff Claude use (list price)",460000,"$460K+"],["Jensen Huang's target",250000,"$250K"],["Top 1% of businesses (per employee)",89000,"$89K"],["Median business (per employee)",137,"$137"]],log:true},
+ heavy:{t:"Monthly AI coding spend per user, May 2026",rows:[["Heaviest 1% of users",2452,"$2,452"],["Average user",248,"$248"],["Typical company's median user",81,"$81"]],log:false},
+ daily:{t:"US workers who use AI at work",rows:[["A few times a year+",52,"52%"],["Weekly+",30,"30%"],["Daily",15,"15%"]],pct:true},
+ slop:{t:"Workslop survey (1,150 US desk workers)",rows:[["Got AI slop from a coworker last month",40,"40%"]],pct:true,extra:"About 2 hours to clean up each one"},
+ none:null
+};
+const SRC={
+ s1:'<a href="https://www.sec.gov/Archives/edgar/data/2130357/000162828026068676/anthropicpbc-sx1ax1.htm">Anthropic S-1/A</a>',
+ tunguz:'<a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
+ jensen:'<a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">Jensen Huang on All-In, GTC 2026</a>',
+ jelly:'<a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish, State of AI H1 2026</a> (engineers only)',
+ gallup:'<a href="https://www.gallup.com/699797/indicator-artificial-intelligence.aspx">Gallup, May 2026</a>',
+ slop:'<a href="https://www.betterup.com/workslop">BetterUp + Stanford, Sept 2025</a>',
+ sherwin:'Sherwin Wu (OpenAI) on Lenny\'s Podcast, Feb 2026: "95% of engineers use Codex"'
+};
+const V=[
+{tested:"Scored as tested intro V1 (token gap). Wording changed since.",id:"gap",name:"The gap",mech:"Your thesis, with numbers",
+ title:"Anthropic values its staff's Claude use above its payroll. The median US business spends $137 a person.",
+ sub:"How to run a team of agents like a frontier lab engineer, starting with the busywork on your own calendar.",
+ body:[
+ "Anthropic's IPO filing says its employees' own Claude use, priced at what customers pay, is now worth more than its payroll. That's over $460,000 a person each year, and its engineers ship more than 45 times as much code a day as in 2024. The median US business spends $137 a person on AI. Jensen Huang says a $500,000 engineer should burn $250,000 in tokens, and that he'd \"go ape\" if one spent $5,000.",
+ "Outside the labs, 15% of US workers use AI daily, and only 19% of office workers do. Most of them use it as a search box and a writing partner.",
+ "The gap is in how the work gets done. Lab engineers hand whole jobs to agents that read every file, run in parallel, and keep going overnight. They spend their own time deciding what matters and checking what comes back. We work this way now, and in this guide we'll show you how to set it up for <span class='tk'>[the 2-3 jobs this guide covers]</span>."],
+ ed:[1,2,1,1,0,0],per:[2,0,2,1],chart:"gap",src:["s1","tunguz","jensen","gallup"],
+ q:"Elena (sim): \"A clean argument about how work changes, with no course-seller hype.\"",
+ risk:["Compares spend, not usage. Your '10 to 100x more use' belief has no direct source yet. Spend is the closest proof.","$460K is my math from the filing, not a number it states. It uses list price, which is what customers pay, not Anthropic's cost.","Big-company numbers can make a ChatGPT-only PM feel this is not for them (David bounced on a similar token hook)."]},
+{tested:"Scored as tested intro V3 (prep-work tax).",id:"day",name:"Your Tuesday",mech:"Name the pain",
+ title:"Hand your busywork to a team of AI agents",
+ sub:"A setup for PMs who still copy-paste between ChatGPT, Slack and docs.",
+ body:[
+ "<span class='tk'>[One real chore, e.g. pulling quotes from 40 sales calls]</span> used to take me <span class='tk'>[X hours]</span>. Now three agents do it overnight while I sleep, and I spend <span class='tk'>[X minutes]</span> in the morning picking which result is worth acting on.",
+ "Chatting with one bot doesn't get you there. You still sit at the keyboard, feed it one paste at a time, and stitch the answers together yourself.",
+ "An agent team reads everything at once and hands you options to judge. You keep the decisions and drop the copy-paste. Here's the setup."],
+ ed:[1,1,2,2,1,0],per:[2,2,2,0],chart:"none",src:[],
+ q:"David (sim): \"That line about ChatGPT trimming twenty minutes while I still do the glue work is my Sunday night.\"",
+ risk:["Needs your real chore and real times. Without them it reads as generic.","Samir (sim): if prep work takes days, delete it instead of automating it. Answer with one thing the agents caught that you would have missed.","Doesn't carry your bigger 'most people are behind' thesis."]},
+{tested:"Scored as tested intro V2 (not autopilot).",id:"def",name:"Not autopilot",mech:"Say what it isn't",
+ title:"An agent team won't ship your product for you",
+ sub:"It does the reading, sorting and first drafts so your judgment covers more ground.",
+ body:[
+ "When people hear \"team of AI agents\" they picture one of two things: a chatbot with a new name, or bots shipping code to production while everyone sleeps.",
+ "Neither is what we mean. 40% of US desk workers got AI slop from a coworker last month, and each one took about two hours to clean up. Taking the human out is how you get slop.",
+ "What works: agents read <span class='tk'>[your inputs]</span>, run in parallel, and bring back <span class='tk'>[specific output]</span>. You decide what's good. Here's how to set it up."],
+ ed:[0,2,1,0,2,0],per:[1,1,2,2],chart:"slop",src:["slop"],
+ q:"Samir (sim): \"At least they admit full autonomy ships slop. That makes me hate this less than usual AI hype.\"",
+ risk:["Opens on a negative, which delays the dream your editor asked for.","The workslop study is a vendor survey (BetterUp sells coaching). Cite it as such.","Weak on 'how hard is setup?'"]},
+{tested:"Scored as tested intro V4 (student story).",id:"case",name:"One person",mech:"Real person, real result",
+ title:"How <span class='tk'>[student]</span> handed <span class='tk'>[job]</span> to agents and <span class='tk'>[result]</span>",
+ sub:"What changed in one PM's week, and how to copy the setup.",
+ body:[
+ "<span class='tk'>[Month]</span>, <span class='tk'>[student, role, company type]</span> was spending <span class='tk'>[X hours]</span> a week on <span class='tk'>[chore]</span>.",
+ "They set up <span class='tk'>[N]</span> agents to <span class='tk'>[what agents do]</span>. Now they review <span class='tk'>[artifact]</span> each morning, and <span class='tk'>[what leadership noticed]</span>.",
+ "They didn't learn to code. They learned to give agents whole jobs and check the results. Here's the exact setup."],
+ ed:[2,1,2,2,1,1],per:[1,1,0,0],chart:"none",src:[],
+ q:"Elena (sim): \"Paired with a 'student from our cohort' story, this reads like a bootcamp sales page.\"",
+ risk:["Lives or dies on one real, checkable story. You have 'many students promoted' but no named case in the draft.","Reads as a course pitch to VPs. Use a role and outcome, not 'our cohort.'","'They didn't learn to code' needs to be true for this student."]},
+{tested:"Not tested. Dots are my estimate from V1 + V3.",id:"mix",name:"Gap + Tuesday",mech:"Recommended mix",
+ title:"Nvidia's CEO wants a $500,000 engineer to spend $250,000 on tokens. Here's what that buys.",
+ sub:"How to hand your busywork to a team of AI agents, without shipping slop.",
+ body:[
+ "Nvidia's CEO, Jensen Huang, says a $500,000 engineer should use $250,000 a year in tokens. The median US business spends $137 a year per employee on AI. Only 15% of US workers use AI daily.",
+ "Here's what the gap looks like on my calendar. <span class='tk'>[Real chore]</span> took <span class='tk'>[X hours]</span>. Now agents run it overnight and I spend <span class='tk'>[X minutes]</span> deciding what's worth doing.",
+ "Agents don't replace the judgment. They take the reading, sorting and first drafts, so your time goes to the calls only you can make. Here's the setup, starting with one job you can hand off <span class='tk'>[this week / in an hour]</span>."],
+ ed:[2,1,2,2,1,1],per:[2,1,2,1],chart:"gap",src:["jensen","tunguz","gallup"],
+ q:"Built from the panel's results: the gap number for Maya and Elena, the calendar for David, the judgment line for Samir.",
+ risk:["Longest of the set. Cut paragraph 3 if your next section already covers judgment.","Still needs your one real chore with real times.","This mix has not been tested on the simulated readers."]},
+{tested:"From your Codex session, Nov 3. Tested on Codex's 2 simulated readers.",from:"Codex",id:"cx1",name:"Work you never get to",mech:"Codex's pick",pp:[["Beginner","uses ChatGPT, no agents yet"],["Skeptic","uses agents, mixed results"]],
+ title:"How to become more AI-pilled",sub:"Build a team of AI agents to take on more of your work",
+ body:["You probably have a list of things you'd love to do if you had more time. Read through all that customer feedback. Research a new market. Build a prototype of an idea you can't stop thinking about.",
+ "AI agents can help you start working through that list. Give them a task, the context they need, and a way to show you their work. Then review what comes back and decide where to take it.",
+ "<span class='tk'>[Insert a real example: what you asked an agent to do, what it produced, and what you had to check or change.]</span>",
+ "After using billions of tokens and building our own agent harness and personal OS, we now delegate almost all of our work to AI agents. In this article, we'll show you how to get started and how to manage agents so their work is useful."],
+ ed:[1,1,1,0,1,1],per:[2,2],chart:"none",src:[],
+ q:"Skeptic (sim): \"This feels grounded: it recognizes review and gives the agent a bounded role.\"",
+ risk:["Codex's own worry: 'work you never get to' may not feel urgent enough.","Leaves out your thesis that most people are far behind.","Still has 'personal OS' and 'almost all of our work,' which my panel's skeptic and beginner both reacted against."]},
+{tested:"From your Codex session. Tested on Codex's 2 simulated readers.",from:"Codex",id:"cx4",name:"Answers to work",mech:"Chatbot vs agent",pp:[["Beginner","uses ChatGPT, no agents yet"],["Skeptic","uses agents, mixed results"]],
+ title:"How to become more AI-pilled",sub:"Build a team of AI agents to take on more of your work",
+ body:["You ask AI a question and get an answer. Useful. But what if you could give it a task and come back to a first draft, a research report, or a working prototype?",
+ "That's the shift we've made in our own work. We now delegate almost everything we do to AI agents, then review and build on what they produce. In this article, we'll show you how to start doing the same."],
+ ed:[1,2,1,0,1,0],per:[2,1],chart:"none",src:[],
+ q:"Beginner (sim): \"This connects directly to how I already use ChatGPT.\"",
+ risk:["Skeptic (sim): 'almost everything' sounds inflated. Wants to know what fails and how much checking it takes.","Shortest option. Has no proof or numbers yet."]},
+{tested:"From your Codex session. Tested on Codex's 2 simulated readers.",from:"Codex",id:"cx2",name:"Team on call",mech:"Team picture",pp:[["Beginner","uses ChatGPT, no agents yet"],["Skeptic","uses agents, mixed results"]],
+ title:"How to become more AI-pilled",sub:"Build a team of AI agents to take on more of your work",
+ body:["What would you do if you had a team you could call on whenever you needed one?",
+ "You could ask one person to research a question, another to review customer feedback, and a third to build a prototype. You'd still need to give them direction and make decisions, but you could pursue more ideas at once.",
+ "That's what working with AI agents is starting to feel like."],
+ ed:[2,0,0,0,0,0],per:[1,0],chart:"none",src:[],
+ q:"Skeptic (sim): \"The team comparison makes me wonder whether they're glossing over uneven quality and coordination.\"",
+ risk:["Raises setup questions before answering them.","Shows the dream but not the problem."]},
+{tested:"From your Codex session. Tested on Codex's 2 simulated readers.",from:"Codex",id:"cx3",name:"Hours to tokens",mech:"Your thesis, no numbers",pp:[["Beginner","uses ChatGPT, no agents yet"],["Skeptic","uses agents, mixed results"]],
+ title:"How to become more AI-pilled",sub:"Build a team of AI agents to take on more of your work",
+ body:["Most of us are used to measuring work in hours. If something takes ten hours, we need to find ten hours to do it.",
+ "AI agents give us another option: spend tokens to have them take on some of that work. After using billions of tokens ourselves, we've started looking at almost every task differently. The first question is often: what could an agent do to help with this?"],
+ ed:[1,1,1,0,0,0],per:[0,0],chart:"none",src:[],
+ q:"Skeptic (sim): \"I already know I can spend tokens. The missing equation is whether the output is reliable and saves time after review.\"",
+ risk:["Both of Codex's readers stopped here. In my panel the token hook worked for the power user and the VP, but lost the ChatGPT-only PM.","Both panels suggest putting the token idea after a concrete result, not before it."]},
+{tested:"From your Codex session. Not tested on any simulated readers.",from:"Codex",id:"cxd",name:"Codex full rewrite",mech:"Day-in-the-life",pp:[["Beginner","uses ChatGPT, no agents yet"],["Skeptic","uses agents, mixed results"]],
+ title:"How to become more AI-pilled",sub:"Build a team of AI agents to take on more of your work",
+ body:["Imagine starting your day by giving a few agents work that would otherwise take you hours. One reads through customer feedback and pulls out the patterns. Another researches a question you haven't had time to dig into. A third builds a prototype you can try.",
+ "When they're done, you review what they found, ask follow-up questions, and decide what to do next. You can explore ideas that might otherwise have sat on your list for weeks.",
+ "AI agents are really freaking good now. They can read thousands of documents, use programs on your computer, write code, and create working prototypes. They still make mistakes, and getting good results takes practice. But they can already take on far more work than most people realize.",
+ "We call this way of working <b>being AI-pilled</b>. It means getting into the habit of asking what an agent could take on, giving it enough context to do the work, and figuring out how to check what comes back. […]",
+ "<span class='tk'>[Add a real example here: what was the task, what did you delegate, what did the agents produce, and what did you do with the result?]</span>"],
+ ed:[2,2,1,0,1,0],per:[-1,-1],chart:"none",src:[],
+ q:"Not tested. Keeps your phrase 'AI-pilled' and defines it, which no other option does.",
+ risk:["Longest option, at 7 paragraphs before the example.","Opens with 'Imagine,' a made-up scene, so it needs the real example to land.","'AI-pilled' put off the VP in my panel. Here it is at least defined."]},
+{tested:"Scored as tested intro V0 (your draft).",id:"orig",name:"Your draft",mech:"Baseline",
+ title:"How to become more AI pilled",sub:"Manage teams of AI agents to get more done",
+ body:[
+ "AI Agents are really freaking good now, but most companies still haven't realized this yet. With Astra and Opus 5.5, we can create working products, games, and movies with single prompts. […]",
+ "The diffusion of AI into broad sectors of the economy is unevenly distributed. <span class='unsrc'>Revenue per employee has not increased for companies in the S&P 493.</span> <span class='unsrc'>The top 1% of AI spenders are VC backed companies</span> […]",
+ "[…] Frontier labs are giving their employees millions of dollars of annual token spend […] After using billions of tokens and building our own AI agent harness and personal OS, we now delegate almost all of our work to AI agents. […]"],
+ ed:[0,0,0,0,0,0],per:[0,0,0,0],chart:"gap",src:["tunguz"],
+ q:"All 4 simulated readers left. Samir: \"Gone the second it said 'single prompts' and 'AI-pilled.'\"",
+ risk:["'Single prompts' build working products: every reader pushed back.","'AI-pilled' is insider slang. Elena won't forward it, and David read it as a dev tutorial.","The 'millions in token spend' line is your strongest idea and sits in paragraph 3. The other variants move it up."]}
+];
+const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
+let i=0;
+const tabs=document.getElementById("tabs");
+function sym(v){return v==="keep"?"✓":v==="maybe"?"?":v==="cut"?"✕":""}
+function drawTabs(){tabs.innerHTML=V.map((v,k)=>`<span class="tab ${k===i?'on':''}" data-k="${k}">${k+1}. ${v.from?"<span style=\"color:#6aa8ff\">◆</span> ":""}${v.name}<span class="s">${sym(ls[v.id])}</span></span>`).join("")+`<span class="hint">← → to flip</span>`;
+ tabs.querySelectorAll(".tab").forEach(t=>t.onclick=()=>{i=+t.dataset.k;draw()})}
+function dot(s,l){const c=["no","mid","ok"][s];return `<span class="dot ${c}" title="${l}">${["✕","~","✓"][s]}</span>`}
+function chart(k){const c=CH[k];if(!c)return '<div class="src">No outside numbers. Runs on your own story.</div>';
+ const max=Math.max(...c.rows.map(r=>r[1]));const W=420,rowH=34;
+ let s=`<div style="font-size:13px;margin-bottom:6px">${c.t}</div><svg viewBox="0 0 ${W} ${c.rows.length*rowH}" width="100%">`;
+ c.rows.forEach((r,j)=>{let f=c.pct?r[1]/100:(c.log?Math.log10(r[1])/Math.log10(max):r[1]/max);const w=Math.max(4,f*(W-190));
+  s+=`<text x="0" y="${j*rowH+15}" style="fill:#8a93a3">${r[0]}</text><rect x="0" y="${j*rowH+20}" width="${w}" height="9" rx="4" fill="${j===c.rows.length-1&&!c.pct?'#f06a6a':'#3ecf8e'}"/><text x="${w+8}" y="${j*rowH+29}" style="font-weight:700">${r[2]}</text>`});
+ s+="</svg>";if(c.log)s+='<div class="legend">Log scale. The top bar is ~3,400x the bottom.</div>';if(c.extra)s+=`<div class="legend">${c.extra}</div>`;return s}
+function draw(){const v=V[i];drawTabs();
+ mech.textContent=v.mech;title.innerHTML=v.title;subtitle.innerHTML=v.sub;body.innerHTML=v.body.map(p=>`<p>${p}</p>`).join("");
+ editor.innerHTML=E.map((e,k)=>`<div class="row"><span class="n">${e}</span>${dot(v.ed[k],e)}</div>`).join("");
+ const pl=v.pp||P;
+ personas.innerHTML=pl.map((p,k)=>{const sc=v.per[k];return `<div class="row"><span class="n">${p[0]} <span style="font-size:12px">· ${p[1]}</span></span>${sc<0?'<span class="dot na">–</span>':dot(sc,p[0])}<span style="font-size:13px;color:#8a93a3">${sc<0?"not tested":["left","cautious","read on / shared"][sc]}</span></div>`}).join("");
+ pquote.innerHTML=`<div class="legend">${v.tested}</div><p class="quote">${v.q}</p>`;
+ document.getElementById("chart").innerHTML=chart(v.chart);
+ srcs.innerHTML=v.src.length?"Sources: "+v.src.map(s=>SRC[s]).join(" · "):"";
+ risks.innerHTML=v.risk.map(r=>`<li>${r}</li>`).join("");
+ document.querySelectorAll(".vote button").forEach(b=>b.classList.toggle("on",ls[v.id]===b.dataset.v));}
+document.querySelectorAll(".vote button").forEach(b=>b.onclick=()=>{ls[V[i].id]=b.dataset.v;localStorage.setItem("hookvotes",JSON.stringify(ls));draw()});
+document.onkeydown=e=>{if(e.key==="ArrowRight")i=(i+1)%V.length;else if(e.key==="ArrowLeft")i=(i-1+V.length)%V.length;else if(/^[1-9]$/.test(e.key)&&+e.key<=V.length)i=+e.key-1;else return;draw()};
+if(/^#\d+$/.test(location.hash))i=Math.min(V.length-1,+location.hash.slice(1)-1);
+draw();
+</script></body></html>

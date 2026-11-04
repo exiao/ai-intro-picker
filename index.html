@@ -126,6 +126,15 @@ Persona dots come from 4 simulated readers run on Nov 3. Grey dashes mean an opt
 <li><b>Revenue per dollar of compute fell in Q3.</b> The S-1 says $5.0B of Q3 compute came through short-term deals that "currently costs significantly more" than multi-year contracts. Fortune reports Anthropic makes more than $2 of revenue per $1 of compute. <a href="https://fortune.com/2026/10/27/as-anthropics-ipo-approaches-cfo-krishna-rao-faces-a-defining-test/">Fortune, Oct 27, 2026</a></li>
 <li><b>How Anthropic's staff fit in:</b> at an estimated $1–3M of list-price use per person, Anthropic's 5,300 staff use $5–16B a year of Claude at list price. That costs about $0.8–2.3B to run, or roughly 2% to 7% of Anthropic's own compute. My estimate.</li>
 </ol>
+<h3 style="font-size:14px;color:#e9ecf1">Final draft</h3>
+<ul style="padding-left:18px;line-height:1.6">
+<li><b>"$6 million to $7 million per employee."</b> Anthropic: $9,863M Q3 2026 compute × 4 ÷ ~5,300 staff = $7.4M (S-1). OpenAI: about $50B of 2026 compute (Epoch AI, secondhand) ÷ a reported ~8,000-staff target = about $6.3M. My math.</li>
+<li><b>"Passed its monthly cash payroll in April."</b> S-1: internal Claude use at list prices "in April 2026… first exceeded our monthly personnel expense, excluding stock-based compensation."</li>
+<li><b>"$600 … $7,000 a day."</b> OpenAI's research org, mid-August 2026, at API prices. <a href="https://openai.com/index/research-acceleration-view-inside-openai/">OpenAI</a></li>
+<li><b>"$137 a year per employee."</b> Ramp AI Index, June 2026, median business. <a href="https://ramp.com/data/ai-index-june-2026">Ramp</a></li>
+<li><b>"Writing and editing (51%) and search (49%)."</b> Gallup, among US employees who use AI. <a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx">Gallup</a></li>
+<li><b>"Taught this to thousands of PMs … students promoted."</b> Your own record. <span class="tk">[ADD ONE NAMED EXAMPLE]</span></li>
+</ul>
 <h3 style="font-size:14px;color:#e9ecf1">Still unsourced</h3>
 <ul style="padding-left:18px;line-height:1.6">
 <li><s>"S&amp;P 493 revenue per employee has not increased."</s> Now sourced: Apollo (item 29).</li>
@@ -149,6 +158,7 @@ const CH={
  apollo:{t:"Who spends on AI (Ramp, Sept 2026)",rows:[["Top 1% of businesses' share of OpenAI + Anthropic spend",80,"80%"],["Share of those top spenders that are VC-backed",80,"~80%"]],pct:true,extra:"Apollo, Oct 2026: revenue per worker flat for the S&P 493"},
  perhead:{t:"Anthropic, per employee per year (Q3 2026 rate)",note:"Log scale. Pay and compute from the S-1. Staff use and its cost are my estimates, midpoints shown.",extra:"Serving paying customers took about 26% of all compute (first 9 months of 2026).",rows:[["All compute (training, research, customers, staff)",7400000,"$7.4M"],["Staff Claude use, at list price (est.)",2000000,"$1–3M"],["Pay, incl. stock",1290000,"$1.29M"],["Same use, at Anthropic's cost (est.)",290000,"$145–435K"]],log:true},
  trillion:{t:"2026 AI infrastructure spend (billions)",note:"Company guidance where given. Microsoft, Oracle and SpaceX are my run-rate estimates. Lab spend is mostly rented from the clouds above it, so it isn't added to the total.",rows:[["Amazon",220,"~$220B"],["Alphabet",200,"$195–205B"],["Microsoft (run rate)",180,"~$180B"],["Meta",140,"$135–145B"],["Oracle (run rate)",110,"~$110B"],["Neoclouds + xAI",105,"~$100–115B"],["OpenAI compute (rented)",50,"~$50B"],["Anthropic compute (rented)",32,"~$32B"]]},
+ final:{t:"AI spend per person per year",note:"Log scale. OpenAI per employee is my math ($50B compute ÷ ~8,000 staff).",rows:[["Anthropic, all compute per employee",7400000,"$7.4M"],["OpenAI, all compute per employee",6250000,"~$6.3M"],["OpenAI top 10% researcher, tokens",1750000,"$1.75M"],["OpenAI typical researcher, tokens",150000,"$150K"],["Median US business, per employee",137,"$137"]],log:true},
  none:null
 };
 const SRC={
@@ -164,6 +174,8 @@ const SRC={
  ramp80:'<a href="https://finance.yahoo.com/technology/ai/articles/1-ai-users-drive-80-042800222.html">Ramp data via BeInCrypto, Oct 22, 2026</a>',
  gartner:'<a href="https://www.gartner.com/en/newsroom/press-releases/2026-10-14-gartner-says-over-us-dollars-three-and-a-half-trillion-of-artificial-intelligence-infrastructure-spending-could-be-exposed-to-impairment-by-the-end-of-2030">Gartner, Oct 14, 2026</a>',
  capex:'Company Q3 2026 filings and calls (see Sources: AI compute spend)',
+ oair:'<a href="https://openai.com/index/research-acceleration-view-inside-openai/">OpenAI, Sept 6, 2026</a>',
+ gallupuse:'<a href="https://www.gallup.com/workplace/712736/organizational-adoption-jumps-six-points.aspx">Gallup, Jul 2026 (uses of AI)</a>',
  tunguz:'<a href="https://tomtunguz.com/ai-spend-breakeven-2029/">Tomasz Tunguz</a> (Anthropic estimate) · <a href="https://ramp.com/data/ai-index-june-2026">Ramp AI Index</a> ($89K, $137)',
  jensen:'<a href="https://www.rdworldonline.com/nvidia-ceo-jensen-huang-says-spend-250k-on-ai-tokens-annually-or-hell-go-ape/">Jensen Huang on All-In, GTC 2026</a>',
  jelly:'<a href="https://jellyfish.co/state-of-ai-software-engineering/">Jellyfish, State of AI H1 2026</a> (engineers only)',
@@ -172,6 +184,24 @@ const SRC={
  sherwin:'Sherwin Wu (OpenAI) on Lenny\'s Podcast, Feb 2026: "95% of engineers use Codex"'
 };
 let V=[
+{tested:"Final draft v2, after Gemini Argon's edits. Not tested on simulated readers.",id:"final2",name:"Final v2",mech:"Final draft, after Argon",
+ title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
+ body:["OpenAI and Anthropic now spend roughly $6 million to $7 million a year on compute for every person they employ. Most of that trains and runs their models, but a growing share goes to their own staff.","Anthropic's IPO filing says the value of its employees' Claude use, priced at what customers pay, passed its monthly cash payroll in April. At OpenAI, the typical researcher uses more than $600 of tokens a day, and the top 10% use more than $7,000.",
+ "Compare that to the median US business, which spends $137 a year per employee on AI. Among workers who use it, the most common uses are writing and editing (51%) and search (49%).",
+ "The labs have learned that instead of trading time for work, you can trade token spend for it. That's what being AI-pilled means. Agents don't get tired. They work in parallel, around the clock, whenever you need them. This makes steering agents the most essential skill for all digital workers.",
+ "We've taught this to thousands of PMs, and many of our students have been promoted and recognized by company leadership. It's given us the conviction that applied AI is one of the biggest opportunities of our lifetimes. In this article, we'll show you what being AI-pilled looks like and how to get there, so you can build a team of AI agents to get more done."],
+ ed:[1,2,1,0,0,0],per:[-1,-1,-1,-1],chart:"final",src:["s1","oair","tunguz","gallupuse"],
+ q:"Argon's edits used: split paragraph 1, 'we' throughout, define AI-pilled. Rejected: its claim that Anthropic hasn't filed (it has), and cutting 'biggest opportunities' (your point 7).",
+ risk:["OpenAI's $6M–7M per employee is my math from a secondhand $50B and a reported 8,000-staff target.","51% and 49% are among workers who use AI, not all office workers.","'Many of our students have been promoted' is vague. One named example would make it land.","Argon flagged 'biggest opportunities of our lifetimes' as hype. Kept because you asked for it."]},
+{tested:"Final draft v1, from your 7 points. Not tested on simulated readers.",id:"final1",name:"Final v1",mech:"Final draft, before Argon",
+ title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
+ body:["OpenAI and Anthropic now spend roughly $6 million to $7 million a year on compute for every person they employ. Most of that trains and runs their models, but a growing share goes to their own staff. Anthropic's IPO filing says the value of its employees' Claude use, priced at what customers pay, passed its monthly cash payroll in April. At OpenAI, the typical researcher uses more than $600 of tokens a day, and the top 10% use more than $7,000.",
+ "The median US business spends $137 a year per employee on AI. Among workers who use it, the most common uses are writing and editing (51%) and search (49%).",
+ "The labs have figured out that instead of trading our time for work, we can trade token spend for it. Agents don't get tired. They work in parallel, around the clock, whenever we need them. This makes steering agents the most essential skill for all digital workers.",
+ "Aman and Eric have taught this to thousands of PMs, and many of their students have been promoted and recognized by company leadership. It's given us the conviction that applied AI is one of the biggest opportunities of our lifetimes. In this article, we'll show you what being AI-pilled looks like and how to become AI-pilled, so you can build a team of AI agents to get more done."],
+ ed:[1,1,1,0,0,0],per:[-1,-1,-1,-1],chart:"final",src:["s1","oair","tunguz","gallupuse"],
+ q:"Your 7 points in order, with sources for every number.",
+ risk:["OpenAI's $6M–7M per employee is my math from a secondhand $50B and a reported 8,000-staff target.","51% and 49% are among workers who use AI, not all office workers.","'Many of our students have been promoted' is vague. One named example would make it land.","Switches from 'Aman and Eric' to 'us' in the last paragraph.","Paragraph 1 is long."]},
 {tested:"Scored as tested intro V1 (token gap). Wording changed since.",id:"gap",name:"The gap",mech:"Your thesis, with numbers",
  title:"AI labs spend $2 million per person on compute. The median US business spends $137.",
  sub:"How to run a team of agents like a frontier lab engineer, starting with the busywork on your own calendar.",
@@ -353,7 +383,7 @@ let V=[
  q:"All 4 simulated readers left. Samir: \"Gone the second it said 'single prompts' and 'AI-pilled.'\"",
  risk:["'Single prompts' build working products: every reader pushed back.","'AI-pilled' is insider slang. Elena won't forward it, and David read it as a dev tutorial.","The 'millions in token spend' line is your strongest idea and sits in paragraph 3. The other variants move it up."]}
 ];
-const ORDER=["gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
+const ORDER=["final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
 const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
 let i=0;
 const tabs=document.getElementById("tabs");

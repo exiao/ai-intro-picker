@@ -209,6 +209,16 @@ const SRC={
  sherwin:'Sherwin Wu (OpenAI) on Lenny\'s Podcast, Feb 2026: "95% of engineers use Codex"'
 };
 let V=[
+{tested:"Final draft v5: v4 plus the dream and the pain, from your original draft. Not tested on simulated readers.",id:"final5",name:"Final v5",mech:"v4 + dream + pain",
+ title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
+ body:["AI agents are really freaking good now, but most companies haven't realized it yet. Agents can read thousands of documents, files and videos and pull out what matters. They can use any program on your computer and do your work well. And this is the worst they will ever be.",
+ "OpenAI and Anthropic spend over $6 million a year on compute per employee. Most of it trains and serves their models, but a growing share goes to their own staff. At OpenAI, the median researcher uses about $219,000 of tokens a year, the top 10% about $2.6 million, and one engineer used $1.3 million in a single month. At Anthropic, staff use averages more than $460,000 a person.",
+ "The median US business spends $137 a year per employee on AI. Accenture centrally funds $348 a year of Claude per person. Most people who use AI at work use it to write and search. They still do the busywork themselves, one prompt at a time.",
+ "Instead of trading our time for work, we can trade token spend for it. Agents don't get tired. They work in parallel, around the clock, on demand. You hand off the busywork and keep your time for the decisions that matter. This makes steering agents the most essential skill for any digital worker.",
+ "After using billions of tokens, we now delegate almost all of our own work to agents. We've taught thousands of PMs how to steer them, <span class='tk'>[from most of the Fortune 500]</span>. Seeing how it's changed their companies has given us the conviction that applied AI is one of the biggest opportunities of our lifetimes. Here's what being AI-pilled looks like, and how to build your own team of agents."],
+ ed:[2,1,2,0,0,0],per:[-1,-1,-1,-1],chart:"final4",src:["s1","oair","steipete","tunguz","accn","gallupuse"],
+ q:"Dream: paragraph 1 and 'keep your time for the decisions that matter.' Pain: 'They still do the busywork themselves, one prompt at a time.'",
+ risk:["'Really freaking good' put off the VP reader in the first panel. Kept because it's your draft's voice.","'Almost all of our own work' drew a skeptic's pushback in the Codex panel.","Left out 'single prompts' and 'personal OS.' Every simulated reader pushed back on both.","Anthropic line uses option B: OpenAI's $1.3M month as the top user, since Anthropic's only top-user figure is from March."]},
 {tested:"Final draft v4, your 9-point outline at yearly run rates. Not tested on simulated readers.",id:"final4",name:"Final v4",mech:"Your outline, yearly",
  title:"How to become AI-pilled",sub:"Build a team of AI agents to get more done",
  body:["OpenAI and Anthropic spend over $6 million a year on compute per employee. Most of it trains and serves their models, but a growing share goes to their own staff. At OpenAI, the median researcher uses about $219,000 of tokens a year, and the top 10% about $2.6 million. At Anthropic, staff use averages more than $460,000 a person, and one engineer was on pace for $1.8 million a year back in March.",
@@ -426,7 +436,7 @@ let V=[
  q:"All 4 simulated readers left. Samir: \"Gone the second it said 'single prompts' and 'AI-pilled.'\"",
  risk:["'Single prompts' build working products: every reader pushed back.","'AI-pilled' is insider slang. Elena won't forward it, and David read it as a dev tutorial.","The 'millions in token spend' line is your strongest idea and sits in paragraph 3. The other variants move it up."]}
 ];
-const ORDER=["final4","final3","final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
+const ORDER=["final5","final4","final3","final2","final1","gap","orig"];const ALL=[...ORDER.map(id=>V.find(v=>v.id===id)),...V.filter(v=>!ORDER.includes(v.id))];let showHidden=false;function vis(){V=ALL.filter(v=>showHidden||!v.hidden)}
 const ls=JSON.parse(localStorage.getItem("hookvotes")||"{}");
 let i=0;
 const tabs=document.getElementById("tabs");
